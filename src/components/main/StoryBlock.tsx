@@ -5,7 +5,7 @@ import { colors } from "@/styles/theme";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styled from "styled-components";
-import { Button } from "../common/Button";
+import { Button } from "../common/ButtonStyle";
 
 export default function StoryBlock() {
   const Variants = {

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
-import { Button } from "../common/Button";
+import { Button } from "../common/ButtonStyle";
 
 export default function CopyBlock() {
   const [active, setActive] = useState(1);
