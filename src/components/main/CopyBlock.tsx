@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
+import { Button } from "../common/Button";
 
 export default function CopyBlock() {
   const [active, setActive] = useState(1);
@@ -35,6 +36,19 @@ export default function CopyBlock() {
     },
   ];
 
+  const Variants = {
+    default: {
+      scale: 1,
+    },
+    scaleUp: {
+      scale: 1.1,
+      transition: {
+        duration: 0.2,
+        delay: 0,
+      },
+    },
+  };
+
   return (
     <>
       <Layout>
@@ -45,10 +59,22 @@ export default function CopyBlock() {
           }
         </Description>
         <ButtonWrapper>
-          <Button bgColor={colors.main} textColor={colors.white}>
+          <Button
+            bgColor={colors.main}
+            textColor={colors.white}
+            initial="default"
+            whileHover="scaleUp"
+            variants={Variants}
+          >
             새 카피 만들기
           </Button>
-          <Button bgColor={colors.mainLight6} textColor={colors.main}>
+          <Button
+            bgColor={colors.mainLight6}
+            textColor={colors.main}
+            initial="default"
+            whileHover="scaleUp"
+            variants={Variants}
+          >
             카피 갤러리
           </Button>
         </ButtonWrapper>
@@ -143,20 +169,6 @@ const ButtonWrapper = styled.div`
   display: inline-flex;
   gap: 1rem;
   margin-top: 2rem;
-`;
-const Button = styled.button<{ bgColor: string; textColor: string }>`
-  padding: 0.75rem 2.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 2.1875rem;
-  border: 1px solid ${colors.main};
-  background: ${(props) => props.bgColor};
-  color: ${(props) => props.textColor};
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 `;
 const CardBlock = styled.div`
   display: inline-flex;

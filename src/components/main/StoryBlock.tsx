@@ -5,8 +5,21 @@ import { colors } from "@/styles/theme";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styled from "styled-components";
+import { Button } from "../common/Button";
 
 export default function StoryBlock() {
+  const Variants = {
+    default: {
+      scale: 1,
+    },
+    scaleUp: {
+      scale: 1.1,
+      transition: {
+        duration: 0.2,
+        delay: 0,
+      },
+    },
+  };
   return (
     <Layout>
       <Title>스토리보드 제작</Title>
@@ -16,10 +29,22 @@ export default function StoryBlock() {
         }
       </Description>
       <ButtonWrapper>
-        <Button bgColor={colors.main} textColor={colors.white}>
+        <Button
+          bgColor={colors.main}
+          textColor={colors.white}
+          initial="default"
+          whileHover="scaleUp"
+          variants={Variants}
+        >
           새 카피 만들기
         </Button>
-        <Button bgColor={colors.mainLight6} textColor={colors.main}>
+        <Button
+          bgColor={colors.mainLight6}
+          textColor={colors.main}
+          initial="default"
+          whileHover="scaleUp"
+          variants={Variants}
+        >
           이용 가이드
         </Button>
       </ButtonWrapper>
@@ -55,7 +80,13 @@ export default function StoryBlock() {
           </CardRegion>
         ))}
       </CardBlock>
-      <LinkButtonWrapper>
+      <LinkButtonWrapper
+        bgColor="#252525"
+        textColor={colors.greyTypeMain}
+        initial="default"
+        whileHover="scaleUp"
+        variants={Variants}
+      >
         더 많은 스토리보드 보기
         <Image
           src="/main/arrow-right.svg"
@@ -97,20 +128,6 @@ const ButtonWrapper = styled.div`
   display: inline-flex;
   gap: 1rem;
   margin-top: 2rem;
-`;
-const Button = styled.button<{ bgColor: string; textColor: string }>`
-  padding: 0.75rem 2.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 2.1875rem;
-  border: 1px solid ${colors.main};
-  background: ${(props) => props.bgColor};
-  color: ${(props) => props.textColor};
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin-bottom: 6.25rem;
 `;
 const CardBlock = styled.div`
@@ -153,18 +170,7 @@ const ImageWrapper = styled.div`
   height: 100%;
   margin-bottom: 0.75rem;
 `;
-const LinkButtonWrapper = styled.div`
-  display: inline-flex;
-  padding: 0.75rem 2.125rem 0.75rem 2.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 2.1875rem;
-  background: #252525;
-  color: ${colors.greyTypeMain};
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin-top: 3.5rem;
+const LinkButtonWrapper = styled(Button)`
+  border-color: #252525;
+  margin-top: 3rem;
 `;

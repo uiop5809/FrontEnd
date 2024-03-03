@@ -4,6 +4,7 @@ import { colors } from "@/styles/theme";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styled from "styled-components";
+import { Button } from "../common/Button";
 
 export default function Intro() {
   const Variants = {
@@ -17,6 +18,16 @@ export default function Intro() {
       transition: {
         duration: 0.8,
         delay: 0.1,
+      },
+    },
+    default: {
+      scale: 1,
+    },
+    scaleUp: {
+      scale: 1.2,
+      transition: {
+        duration: 0.2,
+        delay: 0,
       },
     },
   };
@@ -74,7 +85,13 @@ export default function Intro() {
           <Title2>AiSAC</Title2>
           <Title3>이 도와드려요 !</Title3>
         </IntroTextBlock>
-        <LinkButtonWrapper>
+        <LinkButtonWrapper
+          bgColor={colors.main}
+          textColor={colors.white}
+          initial="default"
+          whileHover="scaleUp"
+          variants={Variants}
+        >
           아이작 소개 영상 바로가기
           <Image
             src="/main/arrow-right.svg"
@@ -224,21 +241,15 @@ const IntroMiniTextBlock = styled.div`
   font-weight: 500;
   line-height: normal;
   text-decoration-line: underline;
+  z-index: 1;
+  cursor: pointer;
 `;
-const LinkButtonWrapper = styled.div`
-  display: inline-flex;
-  padding: 1rem 2.125rem 1rem 2.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
-  border-radius: 3.6875rem;
-  border: 0.5px solid ${colors.main};
-  background: ${colors.main};
-
-  color: ${colors.white};
+const LinkButtonWrapper = styled(Button)`
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   margin: 3.75rem 0;
+  z-index: 1;
+  padding: 1rem 2.5rem;
 `;

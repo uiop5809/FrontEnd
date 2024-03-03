@@ -106,6 +106,7 @@ const CardWrapper = styled(motion.div)`
     ),
     #262525;
   backdrop-filter: blur(2px);
+  cursor: pointer;
 `;
 const ImageWrapper = styled.div`
   position: relative;
