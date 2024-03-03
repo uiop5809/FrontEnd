@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-const colors = {
+export const colors = {
   main: "#D33B4D",
   mainDark1: "#B51C2E",
   mainDark2: "#900717",
@@ -13,17 +13,16 @@ const colors = {
   black: "#252525",
   white: "#ffffff",
   greyTypeMain: "#B4B4B4",
+  background: "#1A1A1A",
 } as const;
 
 interface Font {
-  font: string;
   weight: number;
   size: number;
   lineHeight: number;
 }
 
-const FONT = ({ font, weight, size, lineHeight }: Font): string => `
-    font-family : "${font}";
+const FONT = ({ weight, size, lineHeight }: Font): string => `
     font-weight : ${weight};
     font-size : ${size}rem;
     line-height : ${lineHeight}%;
@@ -31,7 +30,6 @@ const FONT = ({ font, weight, size, lineHeight }: Font): string => `
 
 const fonts = {
   heading1: FONT({
-    font: "Pretendard",
     weight: 700,
     size: 5.6,
     lineHeight: 160,
