@@ -15,10 +15,13 @@ export const SearchModalBox = styled.div`
 `;
 
 // 모달 스타일
-export const SearchModalContent = styled.div`
+export const SearchModalContent = styled.div<{
+  width: string;
+  height: string;
+}>`
   padding: 1.62rem;
-  width: 37.5rem;
-  height: 22rem;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   flex-shrink: 0;
   border-radius: 0.875rem;
   background: #1e1e1e;

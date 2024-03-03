@@ -12,7 +12,11 @@ const IntroModal = (props) => {
   return (
     // 뒷배경을 클릭하면 모달을 나갈 수 있게 해야하므로 뒷 배경 onClick에 state함수를 넣는다.
     <SearchModalBox onClick={clickModal}>
-      <SearchModalContent onClick={(e) => e.stopPropagation()}>
+      <SearchModalContent
+        width="37.5rem"
+        height="22rem"
+        onClick={(e) => e.stopPropagation()}
+      >
         <ModalContent>
           <CloseButton onClick={clickModal}>
             <Image src="/main/Cross.svg" alt="close" width={30} height={30} />

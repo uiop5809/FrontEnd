@@ -6,8 +6,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import styled from "styled-components";
 import { Button } from "../common/ButtonStyle";
+import { useState } from "react";
+import StoryModal from "./StoryModal";
 
 export default function StoryBlock() {
+  // 모달 버튼 클릭 유무를 저장할 state
+  const [showModal, setShowModal] = useState(false);
+  // 버튼 클릭시 모달 버튼 클릭 유무를 설정하는 state 함수
+  const clickModal = () => setShowModal(!showModal);
+
   const Variants = {
     default: {
       scale: 1,
@@ -44,9 +51,11 @@ export default function StoryBlock() {
           initial="default"
           whileHover="scaleUp"
           variants={Variants}
+          onClick={clickModal}
         >
           이용 가이드
         </Button>
+        {showModal && <StoryModal clickModal={clickModal} />}
       </ButtonWrapper>
       <CardBlock>
         {storyBoardData[0].map((v, i) => (
