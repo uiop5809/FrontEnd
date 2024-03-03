@@ -3,22 +3,7 @@
 import { styled } from "styled-components";
 import { colors } from "@/styles/theme";
 import { useState } from "react";
-
-const titleData = [
-  "광고 아카이브",
-  "트렌드 분석",
-  "광고 카피 제작",
-  "스토리보드 제작",
-  "아이작 활용",
-];
-
-const subtitleData = [
-  ["광고 검색", "레퍼런스 보드", "광고 데이터 분석"],
-  ["인물 분석", "아이템 분석", "비교 분석"],
-  ["새 카피 만들기", "갤러리"],
-  ["스토리보드 만들기", "갤러리"],
-  ["공지사항", "홍보 콘텐츠", "공공데이터 개발", "활용 안내"],
-];
+import { subtitleData, titleData } from "@/lib/navbar/navbarData";
 
 export default function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -42,8 +27,8 @@ export default function Navbar() {
           onMouseEnter={handleNavbarTrue}
           onMouseLeave={handleNavbarFalse}
         >
-          {titleData.map((title) => {
-            return <Title key={title}>{title}</Title>;
+          {titleData.map((title: string, index: number) => {
+            return <Title key={index}>{title}</Title>;
           })}
         </TitleBox>
         <AuthBox>
@@ -56,9 +41,9 @@ export default function Navbar() {
             onMouseEnter={handleNavbarTrue}
             onMouseLeave={handleNavbarFalse}
           >
-            {subtitleData.map((title, index) => (
+            {subtitleData.map((title: string[], index: number) => (
               <SubtitleBox key={index}>
-                {title.map((subtitle) => {
+                {title.map((subtitle: string) => {
                   return <Title key={subtitle}>{subtitle}</Title>;
                 })}
               </SubtitleBox>
