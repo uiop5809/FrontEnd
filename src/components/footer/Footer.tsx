@@ -58,7 +58,7 @@ const FooterBox = styled.div`
 `;
 
 const FooterText = styled.div`
-  font-size: 1rem;
+  font-size: 0.9rem;
   span {
     font-weight: 800;
   }
