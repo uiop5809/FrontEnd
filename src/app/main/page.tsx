@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import ContentBlock from "@/components/main/ContentBlock";
 import CopyBlock from "@/components/main/CopyBlock";
 import Intro from "@/components/main/Intro";
@@ -28,6 +29,7 @@ const MainPage = async () => {
       />
       <CopyBlock />
       <StoryBlock />
+      <Footer />
     </>
   );
 };
