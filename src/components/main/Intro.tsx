@@ -4,9 +4,16 @@ import { colors } from "@/styles/theme";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styled from "styled-components";
-import { Button } from "../common/Button";
+import { Button } from "../common/ButtonStyle";
+import { useState } from "react";
+import IntroModal from "./IntroModal";
 
 export default function Intro() {
+  // 모달 버튼 클릭 유무를 저장할 state
+  const [showModal, setShowModal] = useState(false);
+  // 버튼 클릭시 모달 버튼 클릭 유무를 설정하는 state 함수
+  const clickModal = () => setShowModal(!showModal);
+
   const Variants = {
     offscreen: {
       y: +50,
@@ -100,7 +107,10 @@ export default function Intro() {
             height={18}
           />
         </LinkButtonWrapper>
-        <IntroMiniTextBlock>도움이 필요하신가요?</IntroMiniTextBlock>
+        <IntroMiniTextBlock onClick={clickModal}>
+          도움이 필요하신가요?
+        </IntroMiniTextBlock>
+        {showModal && <IntroModal clickModal={clickModal} />}
       </Contents>
     </Layout>
   );
