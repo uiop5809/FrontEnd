@@ -61,7 +61,7 @@ export default function Intro() {
 }
 
 const Layout = styled.div`
-  margin-top: 20px;
+  margin-top: 12rem;
   margin-bottom: 16rem;
 `;
 const Contents = styled(motion.div)`
@@ -153,7 +153,7 @@ const IntroMiniTextBlock = styled.div`
   font-weight: 400;
   line-height: 2.875rem;
   margin-top: 1.5rem;
-  margin-bottom: 5.25rem;
+  margin-bottom: 4rem;
   white-space: pre-line;
 `;
 const LinkButtonWrapper = styled.div`
