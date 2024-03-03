@@ -23,15 +23,11 @@ const subtitleData = [
 export default function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
 
-  const handleNavbarClick = () => {
+  const handleNavbarTrue = () => {
     setOpenNavbar(true);
   };
 
-  const handleNavbarHover = () => {
-    setOpenNavbar(true);
-  };
-
-  const handleNavbarLeave = () => {
+  const handleNavbarFalse = () => {
     setOpenNavbar(false);
   };
 
@@ -42,9 +38,9 @@ export default function Navbar() {
           <Logo src={"/navbar/kobaco_logo.svg"} alt={"kobaco"} />
         </LogoBox>
         <TitleBox
-          onClick={handleNavbarClick}
-          onMouseEnter={handleNavbarHover}
-          onMouseLeave={handleNavbarLeave}
+          onClick={handleNavbarTrue}
+          onMouseEnter={handleNavbarTrue}
+          onMouseLeave={handleNavbarFalse}
         >
           {titleData.map((title) => {
             return <Title key={title}>{title}</Title>;
@@ -55,23 +51,21 @@ export default function Navbar() {
           <div>|</div>
           <div>회원가입</div>
         </AuthBox>
-      </Layout>
-      {openNavbar && (
-        <Layout>
+        {openNavbar && (
           <IndexBox
-            onMouseEnter={handleNavbarHover}
-            onMouseLeave={handleNavbarLeave}
+            onMouseEnter={handleNavbarTrue}
+            onMouseLeave={handleNavbarFalse}
           >
             {subtitleData.map((title, index) => (
               <SubtitleBox key={index}>
                 {title.map((subtitle) => {
-                  return <Title>{subtitle}</Title>;
+                  return <Title key={subtitle}>{subtitle}</Title>;
                 })}
               </SubtitleBox>
             ))}
           </IndexBox>
-        </Layout>
-      )}
+        )}
+      </Layout>
     </>
   );
 }
@@ -84,6 +78,12 @@ const Layout = styled.div`
   align-items: center;
   margin: 0 auto;
   gap: 2rem;
+  background: ${colors.background};
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
 `;
 
 const LogoBox = styled.div`
@@ -131,7 +131,6 @@ const AuthBox = styled.div`
   align-items: center;
   gap: 1rem;
   cursor: pointer;
-
   div {
     color: ${colors.white};
     font-size: 0.8rem;
@@ -139,7 +138,7 @@ const AuthBox = styled.div`
 `;
 
 const IndexBox = styled.div`
-  width: 80%;
+  width: 76%;
   height: 18rem;
   display: flex;
   justify-content: center;
@@ -148,8 +147,12 @@ const IndexBox = styled.div`
   backdrop-filter: blur(25px);
   border: 1px solid #333;
   border-radius: 20px;
-  margin: 12rem auto 0 auto;
-  padding: 0 5rem;
+  margin: 0 auto;
+  padding: 0 7rem;
+  position: fixed;
+  top: 5.5rem;
+  left: 0;
+  right: 0;
 `;
 
 const SubtitleBox = styled.div`
