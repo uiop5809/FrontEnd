@@ -22,41 +22,32 @@ export default function Intro() {
   };
 
   return (
-    <>
-      <Layout>
-        <Contents
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={Variants}
-        >
-          <ButtonWrapper>
-            <ButtonBlock>AI analysis System for AD Creation</ButtonBlock>
-          </ButtonWrapper>
-          <IntroTextBlock>
-            <Title>어려웠던 광고제작, </Title>
-            <TitleGradient>AI 기반 광고</TitleGradient>
-          </IntroTextBlock>
-          <IntroTextBlock>
-            <TitleGradient2>창작 지원서비스 </TitleGradient2>
-            <Title2>AiSAC</Title2>
-            <Title3>이 도와드려요 !</Title3>
-          </IntroTextBlock>
-          <IntroMiniTextBlock>
-            {`여기에 짦은 설명이 들어가면 좋을 것 같네요! 여기에 짦은 설명이 들어가면 좋을 것 같네요!
-          여기에 짦은 설명이 들어가면 좋을 것 같네요!`}
-          </IntroMiniTextBlock>
-          <LinkButtonWrapper>
-            아이작 소개 영상 바로가기
-            <Image
-              src={"/main/arrow-right.svg"}
-              alt="right-arrow"
-              width={18}
-              height={18}
-            />
-          </LinkButtonWrapper>
-        </Contents>
-      </Layout>
-    </>
+    <Layout>
+      <Contents initial="offscreen" whileInView="onscreen" variants={Variants}>
+        <ButtonWrapper>
+          <ButtonBlock>AI analysis System for AD Creation</ButtonBlock>
+        </ButtonWrapper>
+        <IntroTextBlock>
+          <Title>어려웠던 광고제작, </Title>
+          <TitleGradient>AI 기반 광고</TitleGradient>
+        </IntroTextBlock>
+        <IntroTextBlock>
+          <TitleGradient2>창작 지원서비스 </TitleGradient2>
+          <Title2>AiSAC</Title2>
+          <Title3>이 도와드려요 !</Title3>
+        </IntroTextBlock>
+        <LinkButtonWrapper>
+          아이작 소개 영상 바로가기
+          <Image
+            src="/main/arrow-right.svg"
+            alt="right-arrow"
+            width={18}
+            height={18}
+          />
+        </LinkButtonWrapper>
+        <IntroMiniTextBlock>도움이 필요하신가요?</IntroMiniTextBlock>
+      </Contents>
+    </Layout>
   );
 }
 
@@ -147,14 +138,11 @@ const Title3 = styled.span`
 const IntroMiniTextBlock = styled.div`
   color: ${colors.greyTypeMain};
   text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   font-style: normal;
-  font-weight: 400;
-  line-height: 2.875rem;
-  margin-top: 1.5rem;
-  margin-bottom: 5.25rem;
-  white-space: pre-line;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
 `;
 const LinkButtonWrapper = styled.div`
   display: inline-flex;
@@ -171,4 +159,5 @@ const LinkButtonWrapper = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin: 3.75rem 0;
 `;
