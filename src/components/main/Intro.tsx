@@ -23,6 +23,44 @@ export default function Intro() {
 
   return (
     <Layout>
+      <IconBack>
+        <Icon1
+          src="/main/intro1.png"
+          alt="bg-icon-1"
+          width={182}
+          height={214}
+        />
+        <Icon2
+          src="/main/intro2.png"
+          alt="bg-icon-2"
+          width={148}
+          height={117}
+        />
+        <Icon3
+          src="/main/intro3.png"
+          alt="bg-icon-3"
+          width={335}
+          height={300}
+        />
+        <Icon4
+          src="/main/intro4.png"
+          alt="bg-icon-4"
+          width={227}
+          height={213}
+        />
+        <Icon5
+          src="/main/intro5.png"
+          alt="bg-icon-5"
+          width={146}
+          height={116}
+        />
+        <Icon6
+          src="/main/intro6.png"
+          alt="bg-icon-6"
+          width={182}
+          height={214}
+        />
+      </IconBack>
       <Contents initial="offscreen" whileInView="onscreen" variants={Variants}>
         <ButtonWrapper>
           <ButtonBlock>AI analysis System for AD Creation</ButtonBlock>
@@ -52,15 +90,58 @@ export default function Intro() {
 }
 
 const Layout = styled.div`
-  margin-top: 20px;
+  margin-top: 122px;
   margin-bottom: 16rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+`;
+const IconBack = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 40rem;
+  padding: 0;
+`;
+const Icon1 = styled(Image)`
+  position: absolute;
+  left: 0;
+  top: 0;
+`;
+const Icon2 = styled(Image)`
+  position: absolute;
+  left: 25%;
+  top: 0;
+`;
+const Icon3 = styled(Image)`
+  position: absolute;
+  right: 3%;
+  top: -20%;
+`;
+const Icon4 = styled(Image)`
+  position: absolute;
+  left: 10%;
+  bottom: 0%;
+`;
+const Icon5 = styled(Image)`
+  position: absolute;
+  right: 20%;
+  bottom: 30%;
+`;
+const Icon6 = styled(Image)`
+  position: absolute;
+  right: 0;
+  bottom: 0;
 `;
 const Contents = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  width: 100%;
   justify-content: center;
   align-items: center;
+  background-image: url("main/introBg.png");
+  background-size: contain;
+  width: 77.125rem;
+  height: 37.825rem;
 `;
 const ButtonWrapper = styled.div`
   height: 2.875rem;
