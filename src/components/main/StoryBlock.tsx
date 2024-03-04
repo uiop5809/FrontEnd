@@ -37,8 +37,8 @@ export default function StoryBlock() {
       </Description>
       <ButtonWrapper>
         <Button
-          bgColor={colors.main}
-          textColor={colors.white}
+          background={colors.main}
+          text={colors.white}
           initial="default"
           whileHover="scaleUp"
           variants={Variants}
@@ -46,8 +46,8 @@ export default function StoryBlock() {
           새 카피 만들기
         </Button>
         <Button
-          bgColor={colors.mainLight6}
-          textColor={colors.main}
+          background={colors.mainLight6}
+          text={colors.main}
           initial="default"
           whileHover="scaleUp"
           variants={Variants}
@@ -59,7 +59,7 @@ export default function StoryBlock() {
       </ButtonWrapper>
       <CardBlock>
         {storyBoardData[0].map((v, i) => (
-          <CardRegion>
+          <CardRegion key={i}>
             <CardWrapper>
               <ImageWrapper>
                 <Image src={v.img} alt={`storyboard-image.${i}`} fill />
@@ -75,7 +75,7 @@ export default function StoryBlock() {
       </CardBlock>
       <CardBlock>
         {storyBoardData[1].map((v, i) => (
-          <CardRegion>
+          <CardRegion key={i}>
             <CardWrapper>
               <ImageWrapper>
                 <Image src={v.img} alt={`storyboard-image.${i}`} fill />
@@ -90,8 +90,8 @@ export default function StoryBlock() {
         ))}
       </CardBlock>
       <LinkButtonWrapper
-        bgColor="#252525"
-        textColor={colors.greyTypeMain}
+        background="#252525"
+        text={colors.greyTypeMain}
         initial="default"
         whileHover="scaleUp"
         variants={Variants}

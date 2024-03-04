@@ -60,8 +60,8 @@ export default function CopyBlock() {
         </Description>
         <ButtonWrapper>
           <Button
-            bgColor={colors.main}
-            textColor={colors.white}
+            background={colors.main}
+            text={colors.white}
             initial="default"
             whileHover="scaleUp"
             variants={Variants}
@@ -69,8 +69,8 @@ export default function CopyBlock() {
             새 카피 만들기
           </Button>
           <Button
-            bgColor={colors.mainLight6}
-            textColor={colors.main}
+            background={colors.mainLight6}
+            text={colors.main}
             initial="default"
             whileHover="scaleUp"
             variants={Variants}
