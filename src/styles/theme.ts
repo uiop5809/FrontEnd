@@ -10,6 +10,7 @@ export const colors = {
   mainLight4: "#FEDCE0",
   mainLight5: "#FFE8EB",
   mainLight6: "#FFEFF1",
+  secondary: "#8195FF",
   black: "#252525",
   white: "#ffffff",
   greyTypeMain: "#B4B4B4",

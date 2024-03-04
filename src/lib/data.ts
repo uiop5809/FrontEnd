@@ -39,10 +39,10 @@ export const mainPageData = [
         img: "/main/CharacterAnalysis.png",
       },
       {
-        title: "키워드 분석",
+        title: "아이템 분석",
         description:
           "검색량과 연관어 추이, 네이버 쇼핑 키워드를 통해 정보를 한번에 분석할 수 있어요.",
-        img: "/main/KeywordAnalysis.png",
+        img: "/main/ItemAnalysis.png",
       },
       {
         title: "비교 분석",

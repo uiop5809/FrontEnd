@@ -9,6 +9,7 @@ interface ContentBlockProps {
   title: string;
   description: string;
   card: Card[];
+  isTrend: boolean;
 }
 
 interface Card {
@@ -18,14 +19,14 @@ interface Card {
 }
 
 export default function ContentBlock(props: ContentBlockProps) {
-  const { title, description, card } = props;
+  const { title, description, card, isTrend } = props;
 
   const Variants = {
     default: {
       scale: 1,
     },
     scaleUp: {
-      scale: 1.2,
+      scale: 1.15,
       transition: {
         duration: 0.25,
         delay: 0,
@@ -40,12 +41,19 @@ export default function ContentBlock(props: ContentBlockProps) {
       <CardBlock>
         {card.map((v, i) => (
           <CardWrapper
+            key={i}
             initial="default"
             whileHover="scaleUp"
             variants={Variants}
+            trend={isTrend}
           >
             <ImageWrapper>
-              <Image src={v.img} alt={`card-image.${i}`} fill />
+              <Image
+                src={v.img}
+                alt={`card-image.${i}`}
+                width={336}
+                height={210}
+              />
             </ImageWrapper>
             <CardTitle>{v.title}</CardTitle>
             <CardDescription>{v.description}</CardDescription>
@@ -86,33 +94,40 @@ const CardBlock = styled.div`
   gap: 5rem;
   margin-top: 6.25rem;
 `;
-const CardWrapper = styled(motion.div)`
+const CardWrapper = styled(motion.div)<{ trend: boolean }>`
   width: 21rem;
   height: 23.125rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0.5rem 0;
   gap: 0.5rem;
   flex-shrink: 0;
   border-radius: 1.25rem;
   border: 1px solid rgba(66, 66, 70, 0.6);
-  background: linear-gradient(
+  background: ${(props) =>
+    props.trend
+      ? `linear-gradient(
       180deg,
       rgba(18, 18, 19, 0.3) 5.49%,
-      rgba(211, 59, 77, 0.01) 65.69%,
+      rgba(129, 149, 255, 0.1) 25%,
       rgba(37, 37, 39, 0.06) 81.1%
     ),
-    #262525;
+    #262525`
+      : `linear-gradient(
+      180deg,
+      rgba(18, 18, 19, 0.3) 5.49%,
+      rgba(211, 59, 77, 0.1) 25%,
+      rgba(37, 37, 39, 0.06) 81.1%
+    ),
+    #262525`};
   backdrop-filter: blur(2px);
   cursor: pointer;
 `;
 const ImageWrapper = styled.div`
-  position: relative;
-  width: 70%;
-  height: 50%;
+  width: 100%;
   margin-bottom: 1.5rem;
+  background-color: transparent;
 `;
 const CardTitle = styled.div`
   width: 100%;
@@ -121,6 +136,7 @@ const CardTitle = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  padding: 0 2rem;
 `;
 const CardDescription = styled.div`
   color: ${colors.greyTypeMain};
@@ -128,4 +144,5 @@ const CardDescription = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem;
+  padding: 0 2rem;
 `;
