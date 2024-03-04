@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../common/ButtonStyle";
+import { CardSlider } from "./CardSlider";
 
 export default function CopyBlock() {
   const [active, setActive] = useState(1);
@@ -78,63 +79,7 @@ export default function CopyBlock() {
             카피 갤러리
           </Button>
         </ButtonWrapper>
-        <CardBlock>
-          <CardRegion>
-            <CardWrapper>
-              <CategoryButton>서비스 선택</CategoryButton>
-              <CardContents>
-                ‘내가 사는 지역을 더 살기 좋게, 더 매력 있게’
-              </CardContents>
-            </CardWrapper>
-            <CardInfoBlock>
-              <CardInfo>유해령 | 2024.09.07</CardInfo>
-              <CardInfo>조회 1900</CardInfo>
-            </CardInfoBlock>
-          </CardRegion>
-          <CardRegion>
-            <CardWrapper>
-              <CategoryButton>서비스 선택</CategoryButton>
-              <CardContents>
-                {`‘새학기 새출발엔 역시 가구지!
-                책상부터 의자까지 한번에 해결할 수 있는 패키지 상품 출시!
-                봄맞이 특별 할인가로 만나보세요!’`}
-              </CardContents>
-            </CardWrapper>
-            <CardInfoBlock>
-              <CardInfo>유해령 | 2024.09.07</CardInfo>
-              <CardInfo>조회 1900</CardInfo>
-            </CardInfoBlock>
-          </CardRegion>
-          <CardRegion>
-            <CardWrapper>
-              <CategoryButton>서비스 선택</CategoryButton>
-              <CardContents>
-                {`‘내 방에서 만나는 예술 작품, 내 꿈과 미래를 그리는 공간,
-                멋진 가구 하나면 충분하다.’`}
-              </CardContents>
-            </CardWrapper>
-            <CardInfoBlock>
-              <CardInfo>유해령 | 2024.09.07</CardInfo>
-              <CardInfo>조회 1900</CardInfo>
-            </CardInfoBlock>
-          </CardRegion>
-        </CardBlock>
-        {/* <CardBlock>
-         
-                <CardRegion>
-                  <CardWrapper>
-                    <CategoryButton>{v.category}</CategoryButton>
-                    <CardContents>{v.contents}</CardContents>
-                  </CardWrapper>
-                  <CardInfoBlock>
-                    <CardInfo>
-                      {v.writer} | {v.postDate}
-                    </CardInfo>
-                    <CardInfo>조회 {v.views}</CardInfo>
-                  </CardInfoBlock>
-                </CardRegion>
-            
-        </CardBlock> */}
+        <CardSlider />
       </Layout>
     </>
   );
