@@ -4,6 +4,7 @@ import { styled } from "styled-components";
 import { colors } from "@/styles/theme";
 import { useState } from "react";
 import { subtitleData, titleData } from "@/lib/navbar/navbarData";
+import NOSSR from "../common/NOSSR";
 
 export default function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -18,39 +19,41 @@ export default function Navbar() {
 
   return (
     <>
-      <Layout>
-        <LogoBox>
-          <Logo src={"/navbar/kobaco_logo.svg"} alt={"kobaco"} />
-        </LogoBox>
-        <TitleBox
-          onClick={handleNavbarTrue}
-          onMouseEnter={handleNavbarTrue}
-          onMouseLeave={handleNavbarFalse}
-        >
-          {titleData.map((title: string, index: number) => {
-            return <Title key={index}>{title}</Title>;
-          })}
-        </TitleBox>
-        <AuthBox>
-          <div>로그인</div>
-          <div>|</div>
-          <div>회원가입</div>
-        </AuthBox>
-        {openNavbar && (
-          <IndexBox
+      <NOSSR>
+        <Layout>
+          <LogoBox>
+            <Logo src={"/navbar/kobaco_logo.svg"} alt={"kobaco"} />
+          </LogoBox>
+          <TitleBox
+            onClick={handleNavbarTrue}
             onMouseEnter={handleNavbarTrue}
             onMouseLeave={handleNavbarFalse}
           >
-            {subtitleData.map((title: string[], index: number) => (
-              <SubtitleBox key={index}>
-                {title.map((subtitle: string) => {
-                  return <Title key={subtitle}>{subtitle}</Title>;
-                })}
-              </SubtitleBox>
-            ))}
-          </IndexBox>
-        )}
-      </Layout>
+            {titleData.map((title: string, index: number) => {
+              return <Title key={index}>{title}</Title>;
+            })}
+          </TitleBox>
+          <AuthBox>
+            <div>로그인</div>
+            <div>|</div>
+            <div>회원가입</div>
+          </AuthBox>
+          {openNavbar && (
+            <IndexBox
+              onMouseEnter={handleNavbarTrue}
+              onMouseLeave={handleNavbarFalse}
+            >
+              {subtitleData.map((title: string[], index: number) => (
+                <SubtitleBox key={index}>
+                  {title.map((subtitle: string) => {
+                    return <Title key={subtitle}>{subtitle}</Title>;
+                  })}
+                </SubtitleBox>
+              ))}
+            </IndexBox>
+          )}
+        </Layout>
+      </NOSSR>
     </>
   );
 }
