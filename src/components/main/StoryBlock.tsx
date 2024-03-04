@@ -7,7 +7,8 @@ import Image from "next/image";
 import styled from "styled-components";
 import { Button } from "../common/ButtonStyle";
 import { useState } from "react";
-import StoryModal from "./StoryModal";
+import StoryModal from "../common/VideoModal";
+import { storyBoardKey } from "@/constants/videoKey";
 
 export default function StoryBlock() {
   // 모달 버튼 클릭 유무를 저장할 state
@@ -51,12 +52,20 @@ export default function StoryBlock() {
           initial="default"
           whileHover="scaleUp"
           variants={Variants}
-          onClick={clickModal}
         >
-          이용 가이드
+          스토리보드 갤러리
         </Button>
-        {showModal && <StoryModal clickModal={clickModal} />}
       </ButtonWrapper>
+      <IntroMiniTextBlock onClick={clickModal}>
+        이용 가이드 보러가기
+      </IntroMiniTextBlock>
+      {showModal && (
+        <StoryModal
+          title="스토리보드 제작 이용 가이드"
+          clickModal={clickModal}
+          videoKey={storyBoardKey}
+        />
+      )}
       <CardBlock>
         {storyBoardData[0].map((v, i) => (
           <CardRegion key={i}>
@@ -89,21 +98,6 @@ export default function StoryBlock() {
           </CardRegion>
         ))}
       </CardBlock>
-      <LinkButtonWrapper
-        background="#252525"
-        text={colors.greyTypeMain}
-        initial="default"
-        whileHover="scaleUp"
-        variants={Variants}
-      >
-        더 많은 스토리보드 보기
-        <Image
-          src="/main/arrow-right.svg"
-          alt="right-arrow"
-          width={18}
-          height={18}
-        />
-      </LinkButtonWrapper>
     </Layout>
   );
 }
@@ -137,7 +131,7 @@ const ButtonWrapper = styled.div`
   display: inline-flex;
   gap: 1rem;
   margin-top: 2rem;
-  margin-bottom: 6.25rem;
+  margin-bottom: 1.5rem;
 `;
 const CardBlock = styled.div`
   display: inline-flex;
@@ -179,7 +173,15 @@ const ImageWrapper = styled.div`
   height: 100%;
   margin-bottom: 0.75rem;
 `;
-const LinkButtonWrapper = styled(Button)`
-  border-color: #252525;
-  margin-top: 3rem;
+const IntroMiniTextBlock = styled.div`
+  color: ${colors.greyTypeMain};
+  margin-bottom: 3.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+  z-index: 1;
+  cursor: pointer;
 `;
