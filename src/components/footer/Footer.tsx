@@ -1,6 +1,6 @@
 "use client";
 
-import { footerFirstData, footerSecondData } from "@/lib/footer/footerData";
+import { footerFirstData, footerSecondData } from "@/lib/footer/FooterData";
 import { styled } from "styled-components";
 
 export default function Footer() {

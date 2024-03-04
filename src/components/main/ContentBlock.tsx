@@ -18,6 +18,8 @@ interface Card {
 }
 
 export default function ContentBlock(props: ContentBlockProps) {
+  const { title, description, card } = props;
+
   const Variants = {
     default: {
       scale: 1,
@@ -30,28 +32,27 @@ export default function ContentBlock(props: ContentBlockProps) {
       },
     },
   };
+
   return (
-    <>
-      <Layout>
-        <Title>{props.title}</Title>
-        <Description>{props.description}</Description>
-        <CardBlock>
-          {props.card.map((v, i) => (
-            <CardWrapper
-              initial="default"
-              whileHover="scaleUp"
-              variants={Variants}
-            >
-              <ImageWrapper>
-                <Image src={v.img} alt={`card-image.${i}`} fill />
-              </ImageWrapper>
-              <CardTitle>{v.title}</CardTitle>
-              <CardDescription>{v.description}</CardDescription>
-            </CardWrapper>
-          ))}
-        </CardBlock>
-      </Layout>
-    </>
+    <Layout>
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+      <CardBlock>
+        {card.map((v, i) => (
+          <CardWrapper
+            initial="default"
+            whileHover="scaleUp"
+            variants={Variants}
+          >
+            <ImageWrapper>
+              <Image src={v.img} alt={`card-image.${i}`} fill />
+            </ImageWrapper>
+            <CardTitle>{v.title}</CardTitle>
+            <CardDescription>{v.description}</CardDescription>
+          </CardWrapper>
+        ))}
+      </CardBlock>
+    </Layout>
   );
 }
 const Layout = styled.div`
@@ -105,6 +106,7 @@ const CardWrapper = styled(motion.div)`
     ),
     #262525;
   backdrop-filter: blur(2px);
+  cursor: pointer;
 `;
 const ImageWrapper = styled.div`
   position: relative;
