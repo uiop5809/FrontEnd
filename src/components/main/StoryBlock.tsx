@@ -4,70 +4,107 @@ import { storyBoardData } from "@/lib/data";
 import { colors } from "@/styles/theme";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 import styled from "styled-components";
+import { Button } from "../common/ButtonStyle";
+import { useState } from "react";
+import StoryModal from "./StoryModal";
 
 export default function StoryBlock() {
+  // 모달 버튼 클릭 유무를 저장할 state
+  const [showModal, setShowModal] = useState(false);
+  // 버튼 클릭시 모달 버튼 클릭 유무를 설정하는 state 함수
+  const clickModal = () => setShowModal(!showModal);
+
+  const Variants = {
+    default: {
+      scale: 1,
+    },
+    scaleUp: {
+      scale: 1.1,
+      transition: {
+        duration: 0.2,
+        delay: 0,
+      },
+    },
+  };
   return (
-    <>
-      <Layout>
-        <Title>스토리보드 제작</Title>
-        <Description>
-          {
-            "텍스트를 입력하면 Ai가 맞춤형 이미지를 생성해주고,\n외부 오픈소스를 넣거나 직접 그림을 그려 스토리보드를 만들 수 있어요."
-          }
-        </Description>
-        <ButtonWrapper>
-          <Button bgColor={colors.main} textColor={colors.white}>
-            새 카피 만들기
-          </Button>
-          <Button bgColor={colors.mainLight6} textColor={colors.main}>
-            이용 가이드
-          </Button>
-        </ButtonWrapper>
-        <CardBlock>
-          {storyBoardData[0].map((v, i) => (
-            <CardRegion>
-              <CardWrapper>
-                <ImageWrapper>
-                  <Image src={v.img} alt={`storyboard-image.${i}`} fill />
-                </ImageWrapper>
-              </CardWrapper>
-              <CardInfoBlock>
-                <CardInfo>
-                  {v.writer} | {v.name}
-                </CardInfo>
-              </CardInfoBlock>
-            </CardRegion>
-          ))}
-        </CardBlock>
-        <CardBlock>
-          {storyBoardData[1].map((v, i) => (
-            <CardRegion>
-              <CardWrapper>
-                <ImageWrapper>
-                  <Image src={v.img} alt={`storyboard-image.${i}`} fill />
-                </ImageWrapper>
-              </CardWrapper>
-              <CardInfoBlock>
-                <CardInfo>
-                  {v.writer} | {v.name}
-                </CardInfo>
-              </CardInfoBlock>
-            </CardRegion>
-          ))}
-        </CardBlock>
-        <LinkButtonWrapper>
-          더 많은 스토리보드 보기
-          <Image
-            src={"/main/arrow-right.svg"}
-            alt="right-arrow"
-            width={18}
-            height={18}
-          />
-        </LinkButtonWrapper>
-      </Layout>
-    </>
+    <Layout>
+      <Title>스토리보드 제작</Title>
+      <Description>
+        {
+          "텍스트를 입력하면 Ai가 맞춤형 이미지를 생성해주고,\n외부 오픈소스를 넣거나 직접 그림을 그려 스토리보드를 만들 수 있어요."
+        }
+      </Description>
+      <ButtonWrapper>
+        <Button
+          bgColor={colors.main}
+          textColor={colors.white}
+          initial="default"
+          whileHover="scaleUp"
+          variants={Variants}
+        >
+          새 카피 만들기
+        </Button>
+        <Button
+          bgColor={colors.mainLight6}
+          textColor={colors.main}
+          initial="default"
+          whileHover="scaleUp"
+          variants={Variants}
+          onClick={clickModal}
+        >
+          이용 가이드
+        </Button>
+        {showModal && <StoryModal clickModal={clickModal} />}
+      </ButtonWrapper>
+      <CardBlock>
+        {storyBoardData[0].map((v, i) => (
+          <CardRegion>
+            <CardWrapper>
+              <ImageWrapper>
+                <Image src={v.img} alt={`storyboard-image.${i}`} fill />
+              </ImageWrapper>
+            </CardWrapper>
+            <CardInfoBlock>
+              <CardInfo>
+                {v.writer} | {v.name}
+              </CardInfo>
+            </CardInfoBlock>
+          </CardRegion>
+        ))}
+      </CardBlock>
+      <CardBlock>
+        {storyBoardData[1].map((v, i) => (
+          <CardRegion>
+            <CardWrapper>
+              <ImageWrapper>
+                <Image src={v.img} alt={`storyboard-image.${i}`} fill />
+              </ImageWrapper>
+            </CardWrapper>
+            <CardInfoBlock>
+              <CardInfo>
+                {v.writer} | {v.name}
+              </CardInfo>
+            </CardInfoBlock>
+          </CardRegion>
+        ))}
+      </CardBlock>
+      <LinkButtonWrapper
+        bgColor="#252525"
+        textColor={colors.greyTypeMain}
+        initial="default"
+        whileHover="scaleUp"
+        variants={Variants}
+      >
+        더 많은 스토리보드 보기
+        <Image
+          src="/main/arrow-right.svg"
+          alt="right-arrow"
+          width={18}
+          height={18}
+        />
+      </LinkButtonWrapper>
+    </Layout>
   );
 }
 const Layout = styled.div`
@@ -100,20 +137,6 @@ const ButtonWrapper = styled.div`
   display: inline-flex;
   gap: 1rem;
   margin-top: 2rem;
-`;
-const Button = styled.button<{ bgColor: string; textColor: string }>`
-  padding: 0.75rem 2.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 2.1875rem;
-  border: 1px solid ${colors.main};
-  background: ${(props) => props.bgColor};
-  color: ${(props) => props.textColor};
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin-bottom: 6.25rem;
 `;
 const CardBlock = styled.div`
@@ -156,18 +179,7 @@ const ImageWrapper = styled.div`
   height: 100%;
   margin-bottom: 0.75rem;
 `;
-const LinkButtonWrapper = styled.div`
-  display: inline-flex;
-  padding: 0.75rem 2.125rem 0.75rem 2.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 2.1875rem;
-  background: #252525;
-  color: ${colors.greyTypeMain};
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin-top: 3.5rem;
+const LinkButtonWrapper = styled(Button)`
+  border-color: #252525;
+  margin-top: 3rem;
 `;
