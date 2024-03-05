@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "../common/ButtonStyle";
 import { colors } from "@/styles/theme";
 
-const IntroModal = (props) => {
+const IntroModal = (props: any) => {
   // 전달받은 state 함수
   const { clickModal } = props;
 
@@ -27,7 +27,7 @@ const IntroModal = (props) => {
               "광고는 아래와 같은 순서로 만들어져요.\n광고 아카이브를 통해 참고영상부터 빠르게 찾아보세요!"
             }
           </SubTitle>
-          <BottomButton bgColor={colors.main} textColor={colors.white}>
+          <BottomButton background={colors.main} text={colors.white}>
             광고 아카이브
             <Image
               src="/main/arrow-right.svg"
