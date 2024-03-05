@@ -1,15 +1,17 @@
-import { useState } from "react";
-import { SearchModalBox, SearchModalContent } from "../common/ModalStyle";
+import { SearchModalBox, SearchModalContent } from "./ModalStyle";
 import styled from "styled-components";
 import Image from "next/image";
-import { Button } from "../common/ButtonStyle";
 import { colors } from "@/styles/theme";
-import { videoKey } from "@/constants/videoKey";
 import YouTube from "react-youtube";
 
-const StoryModal = (props) => {
+interface VideoProps {
+  title: string;
+  clickModal: any;
+  videoKey: string;
+}
+const VideoModal = (props: VideoProps) => {
   // 전달받은 state 함수
-  const { clickModal } = props;
+  const { title, clickModal, videoKey } = props;
 
   return (
     // 뒷배경을 클릭하면 모달을 나갈 수 있게 해야하므로 뒷 배경 onClick에 state함수를 넣는다.
@@ -23,7 +25,7 @@ const StoryModal = (props) => {
           <CloseButton onClick={clickModal}>
             <Image src="/main/Cross.svg" alt="close" width={30} height={30} />
           </CloseButton>
-          <Title>스토리보드 제작 이용 가이드</Title>
+          <Title>{title}</Title>
           <YouTube
             videoId={videoKey}
             opts={{
@@ -46,7 +48,7 @@ const StoryModal = (props) => {
   );
 };
 
-export default StoryModal;
+export default VideoModal;
 
 const ModalContent = styled.div`
   position: relative;

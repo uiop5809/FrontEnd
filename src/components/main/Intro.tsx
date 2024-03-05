@@ -43,37 +43,37 @@ export default function Intro() {
     <Layout>
       <IconBack>
         <Icon1
-          src="/main/intro1.png"
+          src={"/main/intro1.png"}
           alt="bg-icon-1"
           width={182}
           height={214}
         />
         <Icon2
-          src="/main/intro2.png"
+          src={"/main/intro2.png"}
           alt="bg-icon-2"
           width={148}
           height={117}
         />
         <Icon3
-          src="/main/intro3.png"
+          src={"/main/intro3.png"}
           alt="bg-icon-3"
           width={335}
           height={300}
         />
         <Icon4
-          src="/main/intro4.png"
+          src={"/main/intro4.png"}
           alt="bg-icon-4"
           width={227}
           height={213}
         />
         <Icon5
-          src="/main/intro5.png"
+          src={"/main/intro5.png"}
           alt="bg-icon-5"
           width={146}
           height={116}
         />
         <Icon6
-          src="/main/intro6.png"
+          src={"/main/intro6.png"}
           alt="bg-icon-6"
           width={182}
           height={214}
@@ -84,31 +84,27 @@ export default function Intro() {
           <ButtonBlock>AI analysis System for AD Creation</ButtonBlock>
         </ButtonWrapper>
         <IntroTextBlock>
-          <Title>어려웠던 광고제작, </Title>
-          <TitleGradient>AI 기반 광고</TitleGradient>
-        </IntroTextBlock>
-        <IntroTextBlock>
-          <TitleGradient2>창작 지원서비스 </TitleGradient2>
-          <Title2>AiSAC</Title2>
-          <Title3>이 도와드려요 !</Title3>
+          어려웠던 광고제작,
+          <TitleGradient>AI 기반 광고 창작 지원서비스</TitleGradient>
+          <Title>AiSAC</Title>이 도와드려요 !
         </IntroTextBlock>
         <LinkButtonWrapper
-          bgColor={colors.main}
-          textColor={colors.white}
+          background={colors.main}
+          text={colors.white}
           initial="default"
           whileHover="scaleUp"
           variants={Variants}
         >
           아이작 소개 영상 바로가기
           <Image
-            src="/main/arrow-right.svg"
+            src={"/main/arrow-right.svg"}
             alt="right-arrow"
             width={18}
             height={18}
           />
         </LinkButtonWrapper>
         <IntroMiniTextBlock onClick={clickModal}>
-          도움이 필요하신가요?
+          광고 제작이 처음이신가요?
         </IntroMiniTextBlock>
         {showModal && <IntroModal clickModal={clickModal} />}
       </Contents>
@@ -117,7 +113,7 @@ export default function Intro() {
 }
 
 const Layout = styled.div`
-  margin-top: 122px;
+  margin-top: 132px;
   margin-bottom: 16rem;
   display: flex;
   flex-direction: column;
@@ -165,7 +161,7 @@ const Contents = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("main/introBg.png");
+  background-image: url(main/introBg.png);
   background-size: contain;
   width: 77.125rem;
   height: 37.825rem;
@@ -197,51 +193,29 @@ const ButtonBlock = styled.div`
 `;
 
 const IntroTextBlock = styled.div`
+  color: ${colors.white};
   text-align: center;
   font-size: 3.625rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 5.25rem;
+  line-height: 5.375rem;
+`;
+const TitleGradient = styled.div`
+  background: linear-gradient(90deg, #ffe8eb -10.66%, #f88e9a 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.625rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 5.375rem;
 `;
 const Title = styled.span`
-  background: linear-gradient(90deg, #f0e3e5 38%, #dcaab0 99.19%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-const TitleGradient = styled.span`
-  background: linear-gradient(91deg, #e0b4b9 59.35%, #da7b86 92.68%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 3.625rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 5.25rem;
-`;
-const TitleGradient2 = styled.span`
-  background: linear-gradient(92deg, #e0b4b9 2.45%, #da7b86 36.2%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 3.625rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 5.25rem;
-`;
-const Title2 = styled.span`
   color: #d03b4d;
   font-size: 3.625rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 5.25rem;
-`;
-const Title3 = styled.span`
-  color: var(--White, #fff);
-  font-size: 3.625rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 5.25rem;
+  line-height: 5.375rem;
 `;
 const IntroMiniTextBlock = styled.div`
   color: ${colors.greyTypeMain};

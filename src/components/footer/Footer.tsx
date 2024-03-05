@@ -2,26 +2,29 @@
 
 import { footerFirstData, footerSecondData } from "@/lib/footer/FooterData";
 import { styled } from "styled-components";
+import NOSSR from "../common/NOSSR";
 
 export default function Footer() {
   return (
-    <Layout>
-      <FooterBox>
-        {footerFirstData.map((data: string, index: number) => {
-          return <FooterText key={index}>{data}</FooterText>;
-        })}
-      </FooterBox>
-      <FooterBox>
-        {footerSecondData.map((data: string, index: number) => {
-          return <FooterText key={index}>{data}</FooterText>;
-        })}
-      </FooterBox>
-      <FooterText>
-        <span>
-          Copyright(C) Korea Broadcast Advertising Corp. All Righrts Reserved
-        </span>
-      </FooterText>
-    </Layout>
+    <NOSSR>
+      <Layout>
+        <FooterBox>
+          {footerFirstData.map((data: string, index: number) => {
+            return <FooterText key={index}>{data}</FooterText>;
+          })}
+        </FooterBox>
+        <FooterBox>
+          {footerSecondData.map((data: string, index: number) => {
+            return <FooterText key={index}>{data}</FooterText>;
+          })}
+        </FooterBox>
+        <FooterText>
+          <span>
+            Copyright(C) Korea Broadcast Advertising Corp. All Righrts Reserved
+          </span>
+        </FooterText>
+      </Layout>
+    </NOSSR>
   );
 }
 

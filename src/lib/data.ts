@@ -30,7 +30,7 @@ export const mainPageData = [
   {
     title: "트렌드 분석",
     description:
-      "인물, 키워드 검색을 통해 관련 해시태그와 검색량 추이, 관련 콘텐츠를 확인해보세요.\n키워드 비교 분석으로 공통 연관어와 관련 콘텐츠까지 한번에 데이터를 비교할 수 있어요.",
+      "인물, 아이템 검색을 통해 관련 해시태그와 검색량 추이, 관련 콘텐츠를 확인해보세요.\n키워드 비교 분석으로 공통 연관어와 관련 콘텐츠까지 한번에 데이터를 비교할 수 있어요.",
     card: [
       {
         title: "인물 분석",
@@ -39,10 +39,10 @@ export const mainPageData = [
         img: "/main/CharacterAnalysis.png",
       },
       {
-        title: "키워드 분석",
+        title: "아이템 분석",
         description:
           "검색량과 연관어 추이, 네이버 쇼핑 키워드를 통해 정보를 한번에 분석할 수 있어요.",
-        img: "/main/KeywordAnalysis.png",
+        img: "/main/ItemAnalysis.png",
       },
       {
         title: "비교 분석",
@@ -53,7 +53,24 @@ export const mainPageData = [
     ],
   },
 ];
-
+export const copyGuideData = [
+  {
+    index: "01",
+    title: "N카피 / K카피 생성",
+    description: "원하는 모델을 선택해\n카피를 생성해보세요.",
+  },
+  {
+    index: "02",
+    title: "광고카피 생성",
+    description:
+      "광고 카피는 1개씩 생성이\n가능해요. AI 카피를 수정해\n나만의 카피를 만들고\n저장해보세요.",
+  },
+  {
+    index: "03",
+    title: "카피갤러리",
+    description: "더 많은 예시들을 한번에\n확인할 수 있어요.",
+  },
+];
 export const storyBoardData = [
   [
     {
