@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { styled } from "styled-components";
 import Container from "../common/Container";
@@ -17,9 +17,7 @@ const AgeSearch = () => {
 
 export default AgeSearch;
 
-const StyledContainer = styled(Container)`
-  margin: 1rem;
-`;
+const StyledContainer = styled(Container)``;
 
 const TopBox = styled.div`
   display: flex;

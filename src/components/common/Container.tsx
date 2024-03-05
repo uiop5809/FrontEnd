@@ -17,9 +17,10 @@ const Container = ({ children }: ContainerProps) => {
 export default Container;
 
 const ContainerStyle = styled(motion.div)`
-  margin-top: 10rem; // 임시로
+  margin: 10rem 0.5rem 0.5rem 0.5rem; // 임시로
+
   width: 100%;
-  height: 100%;
+  height: 25rem;
   padding: 2rem;
   background: #212121;
   border-radius: 30px;
