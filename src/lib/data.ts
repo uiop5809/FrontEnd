@@ -53,7 +53,24 @@ export const mainPageData = [
     ],
   },
 ];
-
+export const copyGuideData = [
+  {
+    index: "01",
+    title: "N카피 / K카피 생성",
+    description: "원하는 모델을 선택해\n카피를 생성해보세요.",
+  },
+  {
+    index: "02",
+    title: "광고카피 생성",
+    description:
+      "광고 카피는 1개씩 생성이\n가능해요. AI 카피를 수정해\n나만의 카피를 만들고\n저장해보세요.",
+  },
+  {
+    index: "03",
+    title: "카피갤러리",
+    description: "더 많은 예시들을 한번에\n확인할 수 있어요.",
+  },
+];
 export const storyBoardData = [
   [
     {

@@ -56,9 +56,9 @@ export default function StoryBlock() {
           스토리보드 갤러리
         </Button>
       </ButtonWrapper>
-      <IntroMiniTextBlock onClick={clickModal}>
+      <GuideMiniTextBlock onClick={clickModal}>
         이용 가이드 보러가기
-      </IntroMiniTextBlock>
+      </GuideMiniTextBlock>
       {showModal && (
         <StoryModal
           title="스토리보드 제작 이용 가이드"
@@ -173,7 +173,7 @@ const ImageWrapper = styled.div`
   height: 100%;
   margin-bottom: 0.75rem;
 `;
-const IntroMiniTextBlock = styled.div`
+const GuideMiniTextBlock = styled.div`
   color: ${colors.greyTypeMain};
   margin-bottom: 3.75rem;
   text-align: center;
