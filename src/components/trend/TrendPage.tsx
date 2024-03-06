@@ -9,10 +9,12 @@ import AgeSearch from "./AgeSearch";
 import BrandReputationIndex from "./BrandReputationIndex";
 import RelatedHashTag from "./RelatedHashTag";
 import TrendSearch from "./TrendSearch";
+import RelatedContents from "./RelatedContents";
 
 const TrendPage = async () => {
   return (
     <Layout>
+      <TrendSearch />
       <ContentWrapper width="87.5rem">
         <Title marginBottom="2.5rem">검색량 추이</Title>
         <LineChart />
@@ -27,13 +29,13 @@ const TrendPage = async () => {
           <BarChart />
         </ContentWrapper>
       </InlineContent>
-<!--       <TrendSearch />
       <SecondBox>
         <AgeSearch />
         <AgeSearch />
         <BrandReputationIndex />
       </SecondBox>
-      <RelatedHashTag /> -->
+      <RelatedHashTag />
+      <RelatedContents />
     </Layout>
   );
 };
@@ -71,15 +73,16 @@ const Title = styled.div<{ marginBottom: string }>`
   line-height: normal;
   margin-bottom: ${(props) => props.marginBottom};
 `;
+
 const InlineContent = styled.div`
   display: inline-flex;
   gap: 1.56rem;
-//   gap: 5rem;
-//   justify-content: center;
-//   align-items: center;
-//   width: 90%;
-//   height: 100%;
-//   margin: 6rem auto 0 auto; // 임시로
+  //   gap: 5rem;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 90%;
+  //   height: 100%;
+  //   margin: 6rem auto 0 auto; // 임시로
 `;
 
 const SecondBox = styled.div`
