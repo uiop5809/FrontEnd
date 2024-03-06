@@ -48,25 +48,37 @@ ChartJS.register({
       ctx.stroke();
       ctx.restore();
 
-      // point border 그리기
+      // point smog 그리기
       const ctx2 = chart.ctx;
       ctx2.save();
       ctx2.beginPath();
-      ctx2.arc(x, y, 8, 0, 2 * Math.PI);
+      ctx2.arc(x, y, 12, 0, 2 * Math.PI);
+      ctx2.strokeStyle = "#FFEFF14D";
       ctx2.stroke();
-      ctx2.fillStyle = "#FFD2D7";
+      ctx2.fillStyle = "#FFEFF14D";
       ctx2.fill();
       ctx2.restore();
 
-      // point 그리기
+      // point border 그리기
       const ctx3 = chart.ctx;
       ctx3.save();
       ctx3.beginPath();
-      ctx3.arc(x, y, 6, 0, 2 * Math.PI);
+      ctx3.arc(x, y, 8, 0, 2 * Math.PI);
+      ctx3.strokeStyle = "#FFD2D7";
       ctx3.stroke();
-      ctx3.fillStyle = colors.main;
+      ctx3.fillStyle = "#FFD2D7";
       ctx3.fill();
       ctx3.restore();
+
+      // point 그리기
+      const ctx4 = chart.ctx;
+      ctx4.save();
+      ctx4.beginPath();
+      ctx4.arc(x, y, 6, 0, 2 * Math.PI);
+      ctx4.stroke();
+      ctx4.fillStyle = colors.main;
+      ctx4.fill();
+      ctx4.restore();
     }
   },
 });
@@ -93,9 +105,11 @@ export function LineChart() {
             gradient.addColorStop(1, "#26262600");
             return gradient;
           },
-          borderColor: colors.mainLight1,
+          borderColor: colors.main,
           borderWidth: 2,
-          pointRadius: 0,
+          pointRadius: 3,
+          pointBorderColor: colors.mainLight1,
+          pointBackgroundColor: colors.mainLight1,
         },
       ],
     };
