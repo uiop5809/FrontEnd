@@ -121,5 +121,5 @@ const RecentSearchBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: start;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
