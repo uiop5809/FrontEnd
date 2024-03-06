@@ -1,7 +1,6 @@
 "use client";
 
 import { styled } from "styled-components";
-import Container from "../common/Container";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected";
@@ -71,12 +70,7 @@ const RelatedHashTag = () => {
     };
   }, []);
 
-  return (
-    <Container>
-      <HashTagText>관련 텍스트</HashTagText>
-      <ChartWrapper id="chartdiv" />
-    </Container>
-  );
+  return <ChartWrapper id="chartdiv" />;
 };
 
 export default RelatedHashTag;

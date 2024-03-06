@@ -14,28 +14,37 @@ import RelatedContents from "./RelatedContents";
 const TrendPage = async () => {
   return (
     <Layout>
-      <ContentWrapper>
+      <TrendSearch />
+
+      <ContentWrapper width="87.5rem">
         <Title marginBottom="2.5rem">검색량 추이</Title>
         <LineChart />
       </ContentWrapper>
+
       <InlineContent>
-        <ContentWrapper>
+        <ContentWrapper width="28.125rem">
           <Title marginBottom="1.88rem">성별 검색 비중</Title>
           <RadialChart />
         </ContentWrapper>
-        <ContentWrapper>
+        <ContentWrapper width="28.125rem">
           <Title marginBottom="1.88rem">연령별 검색 비중 TOP 3</Title>
           <BarChart />
         </ContentWrapper>
+        <ContentWrapper width="28.125rem">
+          <Title marginBottom="1.88rem">브랜드 평판 지수</Title>
+          <BrandReputationIndex />
+        </ContentWrapper>
       </InlineContent>
-      <TrendSearch />
-      <SecondBox>
-        <AgeSearch />
-        <AgeSearch />
-        <BrandReputationIndex />
-      </SecondBox>
-      <RelatedHashTag />
-      <RelatedContents />
+
+      <ContentWrapper width="87.5rem">
+        <Title marginBottom="2.5rem">관련 해시태그</Title>
+        <RelatedHashTag />
+      </ContentWrapper>
+
+      <ContentWrapper width="87.5rem">
+        <Title marginBottom="2.5rem">관련 콘텐츠</Title>
+        <RelatedContents />
+      </ContentWrapper>
     </Layout>
   );
 };
@@ -52,7 +61,8 @@ const Layout = styled.div`
   padding-bottom: 200px;
   gap: 1.38rem;
 `;
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ width: string }>`
+  width: ${(props) => props.width};
   padding: 2.25rem 2.5rem;
   border-radius: 1.875rem;
   background: #212121;
