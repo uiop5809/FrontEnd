@@ -18,6 +18,7 @@ export const colors = {
   grey1: "#7f7f7f",
   grey3: "#cecece",
   grey4: "#efefef",
+  grey5: "#f4f4f4",
 } as const;
 
 interface Font {

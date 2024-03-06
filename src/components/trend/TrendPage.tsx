@@ -9,11 +9,11 @@ const TrendPage = async () => {
   return (
     <Layout>
       <ContentWrapper>
-        <Title marginBottom={"5.5rem"}>검색량 추이</Title>
+        <Title marginBottom={"2.5rem"}>검색량 추이</Title>
         <LineChart />
       </ContentWrapper>
       <ContentWrapper>
-        <Title marginBottom={"2rem"}>성별 검색 비중</Title>
+        <Title marginBottom={"1.88rem"}>성별 검색 비중</Title>
         <RadialChart />
       </ContentWrapper>
     </Layout>
@@ -32,15 +32,22 @@ const Layout = styled.div`
   padding-bottom: 200px;
 `;
 const ContentWrapper = styled.div`
-  padding: 2.5rem 3.125rem;
+  padding: 2.25rem 2.5rem;
   border-radius: 1.875rem;
   background: #212121;
 `;
-const Title = styled.h1<{ marginBottom: string }>`
+const Title = styled.div<{ marginBottom: string }>`
+  display: inline-flex;
+  padding: 0.6875rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.0625rem;
+  border-radius: 1.875rem;
+  background: #383838;
   color: ${colors.white};
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   margin-bottom: ${(props) => props.marginBottom};
 `;

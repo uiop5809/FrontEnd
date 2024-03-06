@@ -8,17 +8,25 @@ const RadialChart = () => {
   const [series, setSeries] = useState([56, 44]);
 
   const options = {
-    colors: ["#FF2D46B2", "#565656"],
-    labels: [`여성 ${series[0]}%`, `남성 ${series[1]}%`],
+    colors: [colors.main, colors.secondary],
+    labels: [` 여성 ${series[0]}%`, ` 남성 ${series[1]}%`],
     legend: {
-      show: false,
+      show: true,
+      position: "left",
+      floating: true,
+      fontSize: 14,
+      fontFamily: "Noto Sans KR",
+      fontWeight: 400,
+      labels: {
+        colors: colors.white,
+      },
     },
     plotOptions: {
       radialBar: {
         inverseOrder: false,
         startAngle: -30,
         endAngle: 330,
-        offsetX: 0,
+        offsetX: 50,
         offsetY: 0,
         track: {
           show: true,
@@ -35,10 +43,10 @@ const RadialChart = () => {
           },
         },
         hollow: {
-          size: "35%",
+          size: "35%", // 내부 원 크기
         },
         dataLabels: {
-          show: true,
+          show: false, // 가운데 값 안보이게
           name: {
             show: true,
             fontSize: "22px",
@@ -48,20 +56,19 @@ const RadialChart = () => {
         },
       },
     },
-    fill: {
-      type: ["gradient", "gradient"],
-      gradient: {
-        shade: "dark",
-        type: "vertical",
-        shadeIntensity: 0.5,
-        gradientToColors: ["#FF5B6FB2", "#b4b4b4"],
-        inverseColors: true,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [0, 100],
-      },
-    },
-
+    // fill: {
+    //   type: ["gradient", "gradient"],
+    //   gradient: {
+    //     shade: "dark",
+    //     type: "vertical",
+    //     shadeIntensity: 0.5,
+    //     gradientToColors: ["#FF5B6FB2", "#b4b4b4"],
+    //     inverseColors: true,
+    //     opacityFrom: 1,
+    //     opacityTo: 1,
+    //     stops: [0, 100],
+    //   },
+    // },
     stroke: {
       lineCap: "round",
     },
@@ -69,6 +76,9 @@ const RadialChart = () => {
 
   return (
     <>
+      <Label>
+        {series[0] > series[1] ? `여성 ${series[0]}%` : `남성 ${series[1]}%`}
+      </Label>
       <div className="donut">
         <Chart
           options={options}
@@ -78,44 +88,17 @@ const RadialChart = () => {
           height="330"
         />
       </div>
-      <LabelRegion>
-        <LabelWrapped>
-          <Circle color={"#FF5B6F"} />
-          {`여성 ${series[0]}%`}
-        </LabelWrapped>
-        <LabelWrapped>
-          <Circle color={"#b4b4b4"} />
-          {`남성 ${series[1]}%`}
-        </LabelWrapped>
-      </LabelRegion>
     </>
   );
 };
 
 export default RadialChart;
 
-const LabelRegion = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 1.8rem;
-`;
-const LabelWrapped = styled.div`
-  display: inline-flex;
-  color: ${colors.grey4};
-  font-size: 1rem;
+const Label = styled.div`
+  color: ${colors.grey5};
+  font-size: 2rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
-  justify-content: center;
-  align-items: center;
-  gap: 0.38rem;
-`;
-const Circle = styled.div<{ color: string }>`
-  width: 1rem;
-  height: 1rem;
-  background-color: ${(props) => props.color};
-  border-radius: 1rem;
+  padding-left: 0.78rem;
 `;
