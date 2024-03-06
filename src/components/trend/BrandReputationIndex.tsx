@@ -5,20 +5,17 @@ import { brandRequtation } from "@/lib/trend/trendData";
 
 const BrandReputationIndex = () => {
   return (
-    <Container>
-      <BrandText>브랜드 평판 지수</BrandText>
-      <RankingBox>
-        {brandRequtation.map((brand) => (
-          <Ranking
-            key={brand.id}
-            title={brand.title}
-            ranking={brand.ranking}
-            trend={brand.trend}
-            updown={brand.updown}
-          />
-        ))}
-      </RankingBox>
-    </Container>
+    <RankingBox>
+      {brandRequtation.map((brand) => (
+        <Ranking
+          key={brand.id}
+          title={brand.title}
+          ranking={brand.ranking}
+          trend={brand.trend}
+          updown={brand.updown}
+        />
+      ))}
+    </RankingBox>
   );
 };
 
