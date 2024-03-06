@@ -1,6 +1,4 @@
 import { styled } from "styled-components";
-
-import Container from "../common/Container";
 import RelatedContent from "./RelatedContent";
 
 const relatedContentData = [
@@ -50,19 +48,16 @@ const relatedContentData = [
 
 const RelatedContents = () => {
   return (
-    <Container>
-      <div>관련 콘텐츠</div>
-      <RelatedContentBox>
-        {relatedContentData.map((relatedContent) => (
-          <RelatedContent
-            id={relatedContent.id}
-            title={relatedContent.title}
-            src={relatedContent.src}
-            date={relatedContent.date}
-          />
-        ))}
-      </RelatedContentBox>
-    </Container>
+    <RelatedContentBox>
+      {relatedContentData.map((relatedContent) => (
+        <RelatedContent
+          id={relatedContent.id}
+          title={relatedContent.title}
+          src={relatedContent.src}
+          date={relatedContent.date}
+        />
+      ))}
+    </RelatedContentBox>
   );
 };
 
