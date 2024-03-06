@@ -1,6 +1,6 @@
 "use client";
 
-import { footerFirstData, footerSecondData } from "@/lib/footer/FooterData";
+import { footerFirstData, footerSecondData } from "@/lib/footer/footerData";
 import { styled } from "styled-components";
 import NOSSR from "../common/NOSSR";
 
