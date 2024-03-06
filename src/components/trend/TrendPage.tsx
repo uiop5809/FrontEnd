@@ -5,6 +5,7 @@ import AgeSearch from "./AgeSearch";
 import BrandReputationIndex from "./BrandReputationIndex";
 import RelatedHashTag from "./RelatedHashTag";
 import TrendSearch from "./TrendSearch";
+import RelatedContents from "./RelatedContents";
 
 const TrendPage = () => {
   return (
@@ -16,6 +17,7 @@ const TrendPage = () => {
         <BrandReputationIndex />
       </SecondBox>
       <RelatedHashTag />
+      <RelatedContents />
     </Layout>
   );
 };
