@@ -13,16 +13,16 @@ import TrendSearch from "./TrendSearch";
 const TrendPage = async () => {
   return (
     <Layout>
-      <ContentWrapper>
+      <ContentWrapper width="87.5rem">
         <Title marginBottom="2.5rem">검색량 추이</Title>
         <LineChart />
       </ContentWrapper>
       <InlineContent>
-        <ContentWrapper>
+        <ContentWrapper width="28.125rem">
           <Title marginBottom="1.88rem">성별 검색 비중</Title>
           <RadialChart />
         </ContentWrapper>
-        <ContentWrapper>
+        <ContentWrapper width="28.125rem">
           <Title marginBottom="1.88rem">연령별 검색 비중 TOP 3</Title>
           <BarChart />
         </ContentWrapper>
@@ -50,7 +50,8 @@ const Layout = styled.div`
   padding-bottom: 200px;
   gap: 1.38rem;
 `;
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ width: string }>`
+  width: ${(props) => props.width};
   padding: 2.25rem 2.5rem;
   border-radius: 1.875rem;
   background: #212121;
