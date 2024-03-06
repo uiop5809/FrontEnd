@@ -16,9 +16,10 @@ export const colors = {
   greyTypeMain: "#B4B4B4",
   background: "#1A1A1A",
   grey1: "#7f7f7f",
+  grey2: "#B4B4B4",
   grey3: "#cecece",
   grey4: "#efefef",
-  grey5: "#f4f4f4",
+  grey5: "#F4F4F4",
 } as const;
 
 interface Font {

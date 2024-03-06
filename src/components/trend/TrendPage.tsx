@@ -5,6 +5,10 @@ import { LineChart } from "./LineChart";
 import { colors } from "@/styles/theme";
 import RadialChart from "./RadialChart";
 import BarChart from "./BarChart";
+import AgeSearch from "./AgeSearch";
+import BrandReputationIndex from "./BrandReputationIndex";
+import RelatedHashTag from "./RelatedHashTag";
+import TrendSearch from "./TrendSearch";
 
 const TrendPage = async () => {
   return (
@@ -23,6 +27,13 @@ const TrendPage = async () => {
           <BarChart />
         </ContentWrapper>
       </InlineContent>
+<!--       <TrendSearch />
+      <SecondBox>
+        <AgeSearch />
+        <AgeSearch />
+        <BrandReputationIndex />
+      </SecondBox>
+      <RelatedHashTag /> -->
     </Layout>
   );
 };
@@ -62,4 +73,18 @@ const Title = styled.div<{ marginBottom: string }>`
 const InlineContent = styled.div`
   display: inline-flex;
   gap: 1.56rem;
+//   gap: 5rem;
+//   justify-content: center;
+//   align-items: center;
+//   width: 90%;
+//   height: 100%;
+//   margin: 6rem auto 0 auto; // 임시로
+`;
+
+const SecondBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
