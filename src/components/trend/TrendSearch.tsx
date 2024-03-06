@@ -101,8 +101,7 @@ const SearchImage = styled.div`
   justify-content: center;
   position: absolute;
   left: 2.5rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 1.2rem;
 `;
 
 const SearchBar = styled.input`
