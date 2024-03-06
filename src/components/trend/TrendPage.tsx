@@ -4,18 +4,25 @@ import styled from "styled-components";
 import { LineChart } from "./LineChart";
 import { colors } from "@/styles/theme";
 import RadialChart from "./RadialChart";
+import BarChart from "./BarChart";
 
 const TrendPage = async () => {
   return (
     <Layout>
       <ContentWrapper>
-        <Title marginBottom={"2.5rem"}>검색량 추이</Title>
+        <Title marginBottom="2.5rem">검색량 추이</Title>
         <LineChart />
       </ContentWrapper>
-      <ContentWrapper>
-        <Title marginBottom={"1.88rem"}>성별 검색 비중</Title>
-        <RadialChart />
-      </ContentWrapper>
+      <InlineContent>
+        <ContentWrapper>
+          <Title marginBottom="1.88rem">성별 검색 비중</Title>
+          <RadialChart />
+        </ContentWrapper>
+        <ContentWrapper>
+          <Title marginBottom="1.88rem">연령별 검색 비중 TOP 3</Title>
+          <BarChart />
+        </ContentWrapper>
+      </InlineContent>
     </Layout>
   );
 };
@@ -30,6 +37,7 @@ const Layout = styled.div`
   align-items: center;
   padding-top: 100px;
   padding-bottom: 200px;
+  gap: 1.38rem;
 `;
 const ContentWrapper = styled.div`
   padding: 2.25rem 2.5rem;
@@ -50,4 +58,8 @@ const Title = styled.div<{ marginBottom: string }>`
   font-weight: 400;
   line-height: normal;
   margin-bottom: ${(props) => props.marginBottom};
+`;
+const InlineContent = styled.div`
+  display: inline-flex;
+  gap: 1.56rem;
 `;
