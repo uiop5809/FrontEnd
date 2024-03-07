@@ -103,8 +103,9 @@ export default function Navbar() {
 
 const Layout = styled.div`
   display: flex;
-  width: 90%;
+  width: 100%;
   height: 5.5rem;
+  padding: 0 5%;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -163,6 +164,7 @@ const AuthBox = styled.div`
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  white-space: nowrap;
   div {
     color: ${({ theme }) => theme.colors.white};
     font-size: 0.8rem;
