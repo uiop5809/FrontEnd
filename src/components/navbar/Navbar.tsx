@@ -1,20 +1,53 @@
 "use client";
 
 import { styled } from "styled-components";
-import { colors } from "@/styles/theme";
 import { useState } from "react";
 import { subtitleData, titleData } from "@/lib/navbar/navbarData";
 import NOSSR from "../common/NOSSR";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
+  const router = useRouter();
 
-  const handleNavbarTrue = () => {
-    setOpenNavbar(true);
+  const handleNavbarClick = () => {
+    setOpenNavbar(!openNavbar);
   };
 
-  const handleNavbarFalse = () => {
+  const handleIndexClick = (titleIndex: number, subtitleIndex: number) => {
     setOpenNavbar(false);
+
+    switch (titleIndex) {
+      case 1:
+        switch (subtitleIndex) {
+          case 0:
+            router.push("/trend/people");
+            break;
+          case 1:
+            router.push("/trend/item");
+            break;
+          case 2:
+            router.push("/trend/compare");
+            break;
+          default:
+            break;
+        }
+        break;
+      case 2:
+        switch (subtitleIndex) {
+          case 0:
+            router.push("/adCopy/createAdCopy");
+            break;
+          case 1:
+            router.push("/adCopy/gallery");
+            break;
+          default:
+            break;
+        }
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -22,31 +55,41 @@ export default function Navbar() {
       <NOSSR>
         <Layout>
           <LogoBox>
-            <Logo src={"/navbar/kobaco_logo.svg"} alt={"kobaco"} />
+            <Logo
+              src={"/navbar/kobaco_logo.svg"}
+              alt={"kobaco"}
+              onClick={() => {
+                setOpenNavbar(false);
+                router.push("/");
+              }}
+            />
           </LogoBox>
-          <TitleBox
-            onClick={handleNavbarTrue}
-            onMouseEnter={handleNavbarTrue}
-            onMouseLeave={handleNavbarFalse}
-          >
+
+          <TitleBox onClick={handleNavbarClick}>
             {titleData.map((title: string, index: number) => {
               return <Title key={index}>{title}</Title>;
             })}
           </TitleBox>
+
           <AuthBox>
             <div>로그인</div>
             <div>|</div>
             <div>회원가입</div>
           </AuthBox>
+
           {openNavbar && (
-            <IndexBox
-              onMouseEnter={handleNavbarTrue}
-              onMouseLeave={handleNavbarFalse}
-            >
+            <IndexBox>
               {subtitleData.map((title: string[], index: number) => (
                 <SubtitleBox key={index}>
-                  {title.map((subtitle: string) => {
-                    return <Title key={subtitle}>{subtitle}</Title>;
+                  {title.map((subtitle: string, subIndex: number) => {
+                    return (
+                      <Title
+                        key={subtitle}
+                        onClick={() => handleIndexClick(index, subIndex)}
+                      >
+                        {subtitle}
+                      </Title>
+                    );
                   })}
                 </SubtitleBox>
               ))}
@@ -66,7 +109,7 @@ const Layout = styled.div`
   align-items: center;
   margin: 0 auto;
   gap: 2rem;
-  background: ${colors.background};
+  background: ${({ theme }) => theme.colors.background};
   position: fixed;
   top: 0;
   left: 0;
@@ -85,6 +128,7 @@ const LogoBox = styled.div`
 const Logo = styled.img`
   width: 100%;
   height: 100%;
+  cursor: pointer;
 `;
 
 const TitleBox = styled.div`
@@ -98,7 +142,7 @@ const TitleBox = styled.div`
 `;
 
 const Title = styled.div`
-  color: ${colors.white};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 1rem;
   width: 60%;
   display: flex;
@@ -106,7 +150,7 @@ const Title = styled.div`
   white-space: nowrap;
 
   &:hover {
-    color: ${colors.mainLight1};
+    color: ${({ theme }) => theme.colors.mainLight1};
     transition: 0.1s;
   }
 `;
@@ -120,7 +164,7 @@ const AuthBox = styled.div`
   gap: 1rem;
   cursor: pointer;
   div {
-    color: ${colors.white};
+    color: ${({ theme }) => theme.colors.white};
     font-size: 0.8rem;
   }
 `;
