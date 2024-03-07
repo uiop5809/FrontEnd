@@ -1,9 +1,26 @@
+"use client";
+
 import styled from "styled-components";
 import RecentSearchContent from "./RecentSearchContent";
 import Image from "next/image";
 import { recentSearchData } from "@/lib/trend/trendData";
+import { useState } from "react";
 
-const TrendPeopleSearch = () => {
+interface TrendPeopleSearchProps {
+  setSearchName: (name: string) => void;
+}
+
+const TrendPeopleSearch = (props: TrendPeopleSearchProps) => {
+  const [name, setName] = useState("");
+  const { setSearchName } = props;
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setSearchName(name);
+      setName("");
+    }
+  };
+
   return (
     <Layout>
       <SubTitle>트렌드 분석</SubTitle>
@@ -26,7 +43,12 @@ const TrendPeopleSearch = () => {
         <SearchImage>
           <Image src="/common/search.svg" alt="search" width={20} height={20} />
         </SearchImage>
-        <SearchBar placeholder="예) 유재석, 라이즈, 최민식" />
+        <SearchBar
+          placeholder="예) 유재석, 라이즈, 최민식"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
       </SearchBarBox>
 
       <RecentSearchBox>

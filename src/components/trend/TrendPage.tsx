@@ -9,41 +9,55 @@ import BrandReputationIndex from "./BrandReputationIndex";
 import RelatedHashTag from "./RelatedHashTag";
 import TrendPeopleSearch from "./TrendPeopleSearch";
 import RelatedContents from "./RelatedContents";
+import { useState } from "react";
 
-const TrendPage = async () => {
+const TrendPage = () => {
+  const [searchName, setSearchName] = useState("");
+
   return (
     <Layout>
-      <TrendPeopleSearch />
+      <TrendPeopleSearch setSearchName={setSearchName} />
 
-      <ContentWrapper width="87.5rem">
-        <Title marginBottom="2.5rem">검색량 추이</Title>
-        <LineChart />
-      </ContentWrapper>
+      {searchName !== "" && (
+        <>
+          <SearchText>
+            <span>"{searchName}"</span>에 대한 인물 분석 결과입니다.
+          </SearchText>
 
-      <InlineContent>
-        <ContentWrapper width="28.125rem">
-          <Title marginBottom="1.88rem">성별 검색 비중</Title>
-          <RadialChart />
-        </ContentWrapper>
-        <ContentWrapper width="28.125rem">
-          <Title marginBottom="1.88rem">연령별 검색 비중 TOP 3</Title>
-          <BarChart />
-        </ContentWrapper>
-        <ContentWrapper width="28.125rem">
-          <Title marginBottom="1.88rem">브랜드 평판 지수</Title>
-          <BrandReputationIndex />
-        </ContentWrapper>
-      </InlineContent>
+          <ContentWrapper width="87.5rem">
+            <Title marginBottom="2.5rem">검색량 추이</Title>
+            <LineChart />
+          </ContentWrapper>
 
-      <ContentWrapper width="87.5rem">
-        <Title marginBottom="2.5rem">관련 해시태그</Title>
-        <RelatedHashTag />
-      </ContentWrapper>
+          <InlineContent>
+            <ContentWrapper width="28.125rem">
+              <Title marginBottom="1.88rem">성별 검색 비중</Title>
+              <RadialChart />
+            </ContentWrapper>
+            <ContentWrapper width="28.125rem">
+              <Title marginBottom="1.88rem">연령별 검색 비중 TOP 3</Title>
+              <BarChart />
+            </ContentWrapper>
+            <ContentWrapper width="28.125rem">
+              <Title marginBottom="1.88rem">브랜드 평판 지수</Title>
+              <BrandReputationIndex />
+            </ContentWrapper>
+          </InlineContent>
 
-      <ContentWrapper width="87.5rem">
-        <Title marginBottom="2.5rem">관련 콘텐츠</Title>
-        <RelatedContents />
-      </ContentWrapper>
+          <ContentWrapper width="87.5rem">
+            <Title marginBottom="2.5rem">관련 해시태그</Title>
+            <RelatedHashTag />
+          </ContentWrapper>
+
+          <ContentWrapper width="87.5rem">
+            <Title marginBottom="2.5rem">관련 콘텐츠</Title>
+            <RelatedContents />
+            <PlusButtonBox>
+              <Title marginBottom="0">더보기</Title>
+            </PlusButtonBox>
+          </ContentWrapper>
+        </>
+      )}
     </Layout>
   );
 };
@@ -59,6 +73,15 @@ const Layout = styled.div`
   padding-top: 100px;
   padding-bottom: 200px;
   gap: 1.38rem;
+`;
+const SearchText = styled.div`
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.white};
+  margin: 2rem 0;
+  span {
+    color: ${({ theme }) => theme.colors.mainLight1};
+  }
 `;
 const ContentWrapper = styled.div<{ width: string }>`
   width: ${(props) => props.width};
@@ -93,10 +116,13 @@ const InlineContent = styled.div`
   //   margin: 6rem auto 0 auto; // 임시로
 `;
 
-const SecondBox = styled.div`
+const PlusButtonBox = styled.div`
+  cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  margin-top: 5rem;
+  > div {
+    background: #252525;
+    color: #b4b4b4;
+  }
 `;
