@@ -23,7 +23,6 @@ const TrendPage = () => {
       {searchName !== "" && (
         <>
           <TrendTop />
-
           <SearchText>
             <span>"{searchName}"</span>에 대한 인물 분석 결과입니다.
           </SearchText>
