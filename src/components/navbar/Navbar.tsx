@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { subtitleData, titleData } from "@/lib/navbar/navbarData";
 import NOSSR from "../common/NOSSR";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { NavbarVariants } from "@/styles/animation";
 
 export default function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -96,7 +98,11 @@ export default function Navbar() {
           </AuthBox>
 
           {openNavbar && (
-            <IndexBox>
+            <IndexBox
+              initial="offscreen"
+              whileInView="onscreen"
+              variants={NavbarVariants}
+            >
               {subtitleData.map((title: string[], index: number) => (
                 <SubtitleBox key={index}>
                   {title.map((subtitle: string, subIndex: number) => {
@@ -189,7 +195,7 @@ const AuthBox = styled.div`
   }
 `;
 
-const IndexBox = styled.div`
+const IndexBox = styled(motion.div)`
   width: 76%;
   height: 18rem;
   display: flex;
