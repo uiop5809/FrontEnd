@@ -3,7 +3,7 @@ import RecentSearchContent from "./RecentSearchContent";
 import Image from "next/image";
 import { recentSearchData } from "@/lib/trend/trendData";
 
-const TrendSearch = () => {
+const TrendPeopleSearch = () => {
   return (
     <Layout>
       <SubTitle>트렌드 분석</SubTitle>
@@ -38,7 +38,7 @@ const TrendSearch = () => {
   );
 };
 
-export default TrendSearch;
+export default TrendPeopleSearch;
 
 const Layout = styled.div`
   display: flex;
