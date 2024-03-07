@@ -1,25 +1,7 @@
 import styled from "styled-components";
 import RecentSearchContent from "./RecentSearchContent";
 import Image from "next/image";
-
-const recentSearchData = [
-  {
-    id: 1,
-    name: "이민정",
-  },
-  {
-    id: 2,
-    name: "나인우",
-  },
-  {
-    id: 3,
-    name: "부승관",
-  },
-  {
-    id: 4,
-    name: "이민정",
-  },
-];
+import { recentSearchData } from "@/lib/trend/trendData";
 
 const TrendSearch = () => {
   return (
@@ -61,15 +43,16 @@ export default TrendSearch;
 const Layout = styled.div`
   display: flex;
   flex-direction: column;
+  width: 50%;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  width: 70%;
+  padding-bottom: 200px;
 `;
 
 const SubTitle = styled.div`
   font-size: 1rem;
   color: #b4b4b4;
-  transform: translateY(4rem);
+  transform: translateY(5rem);
 `;
 
 const ImageBox = styled.div`
@@ -77,7 +60,7 @@ const ImageBox = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.colors.white};
@@ -85,7 +68,7 @@ const Title = styled.div`
 
 const Description = styled.div`
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin: 1.5rem 0 4rem 0;
 `;
 
 const SearchBarBox = styled.div`
@@ -101,7 +84,7 @@ const SearchImage = styled.div`
   justify-content: center;
   position: absolute;
   left: 2.5rem;
-  top: 1.2rem;
+  top: 1.4rem;
 `;
 
 const SearchBar = styled.input`
@@ -109,12 +92,11 @@ const SearchBar = styled.input`
   width: 100%;
   height: 100%;
   background: #313131;
-  padding: 1.3rem 5rem;
+  padding: 1.5rem 5rem;
   outline: none;
   border-radius: 100px;
   border: none;
   color: ${({ theme }) => theme.colors.white};
-  margin-bottom: 1rem;
 `;
 
 const RecentSearchBox = styled.div`
@@ -122,4 +104,5 @@ const RecentSearchBox = styled.div`
   display: flex;
   justify-content: start;
   gap: 0.5rem;
+  margin: 1.5rem 0 0 2rem;
 `;

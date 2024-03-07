@@ -18,3 +18,22 @@ export const brandRequtation = [
     title: "영화배우 부문",
   },
 ];
+
+export const recentSearchData = [
+  {
+    id: 1,
+    name: "이민정",
+  },
+  {
+    id: 2,
+    name: "나인우",
+  },
+  {
+    id: 3,
+    name: "부승관",
+  },
+  {
+    id: 4,
+    name: "이민정",
+  },
+];
