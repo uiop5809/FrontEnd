@@ -10,6 +10,7 @@ import RelatedHashTag from "./RelatedHashTag";
 import TrendPeopleSearch from "./TrendPeopleSearch";
 import RelatedContents from "./RelatedContents";
 import { useState } from "react";
+import TrendTop from "./TrendTop";
 
 const TrendPage = () => {
   const [searchName, setSearchName] = useState("");
@@ -20,6 +21,8 @@ const TrendPage = () => {
 
       {searchName !== "" && (
         <>
+          <TrendTop />
+
           <SearchText>
             <span>"{searchName}"</span>에 대한 인물 분석 결과입니다.
           </SearchText>
