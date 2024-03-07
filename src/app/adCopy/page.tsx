@@ -1,4 +1,4 @@
-import AdCopyPage from "@/components/adCopy/adCopyPage";
+import AdCopyPage from "@/components/adCopy/AdCopyPage";
 import NOSSR from "@/components/common/NOSSR";
 
 const AdCopy = async () => {
