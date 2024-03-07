@@ -14,6 +14,7 @@ import {
   ScriptableContext,
 } from "chart.js";
 import { colors } from "@/styles/theme";
+import styled from "styled-components";
 
 ChartJS.register(
   CategoryScale,
@@ -194,8 +195,14 @@ export function LineChart() {
   };
 
   return (
-    <div>
+    <ChartWrapper>
       <Line width="1200" height="500" data={data()} options={options} />
-    </div>
+    </ChartWrapper>
   );
 }
+
+const ChartWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

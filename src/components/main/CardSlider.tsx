@@ -42,7 +42,7 @@ export const CardSlider = () => {
             </CardContents>
           </CardWrapper>
           <CardInfoBlock>
-            <CardInfo>유해령 | 2024.09.07</CardInfo>
+            <CardInfo>김서윤 | 2024.09.07</CardInfo>
             <CardInfo>조회 1900</CardInfo>
           </CardInfoBlock>
         </CardRegion>
@@ -58,7 +58,7 @@ export const CardSlider = () => {
             </CardContents>
           </CardWrapper>
           <CardInfoBlock>
-            <CardInfo>유해령 | 2024.09.07</CardInfo>
+            <CardInfo>김예찬 | 2024.09.07</CardInfo>
             <CardInfo>조회 1900</CardInfo>
           </CardInfoBlock>
         </CardRegion>
@@ -73,7 +73,7 @@ export const CardSlider = () => {
             </CardContents>
           </CardWrapper>
           <CardInfoBlock>
-            <CardInfo>유해령 | 2024.09.07</CardInfo>
+            <CardInfo>박예진 | 2024.09.07</CardInfo>
             <CardInfo>조회 1900</CardInfo>
           </CardInfoBlock>
         </CardRegion>
@@ -87,7 +87,7 @@ export const CardSlider = () => {
             </CardContents>
           </CardWrapper>
           <CardInfoBlock>
-            <CardInfo>유해령 | 2024.09.07</CardInfo>
+            <CardInfo>백건우 | 2024.09.07</CardInfo>
             <CardInfo>조회 1900</CardInfo>
           </CardInfoBlock>
         </CardRegion>
@@ -97,8 +97,7 @@ export const CardSlider = () => {
           <CardWrapper>
             <CategoryButton>서비스 선택</CategoryButton>
             <CardContents>
-              {`‘내 방에서 만나는 예술 작품, 내 꿈과 미래를 그리는 공간,
-                멋진 가구 하나면 충분하다.’`}
+              {`‘아이들 학습 수준에 맞춰 개별 맞춤 수업이 가능해요.\n체계적인 관리를 통해 성적 향상도 쑥쑥!’`}
             </CardContents>
           </CardWrapper>
           <CardInfoBlock>
@@ -113,8 +112,6 @@ export const CardSlider = () => {
 
 const SwiperBlock = styled(Swiper)`
   margin-top: 3.75rem;
-  align-items: center;
-  right: 0.5rem;
 `;
 const CardRegion = styled.div`
   display: flex;

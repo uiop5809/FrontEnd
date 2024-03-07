@@ -75,34 +75,34 @@ export const storyBoardData = [
   [
     {
       img: "/main/story1.png",
-      writer: "유해령",
+      writer: "윤시연",
       name: "아라리 치킨",
     },
     {
       img: "/main/story2.png",
-      writer: "유해령",
+      writer: "정예진",
       name: "나르지오 워킹화",
     },
     {
       img: "/main/story3.png",
-      writer: "유해령",
+      writer: "황주희",
       name: "어드래서블 광고",
     },
   ],
   [
     {
       img: "/main/story4.png",
-      writer: "유해령",
+      writer: "김서윤",
       name: "지벤 컴페니웨어 상업광고",
     },
     {
       img: "/main/story5.png",
-      writer: "유해령",
+      writer: "김예찬",
       name: "싱그라미 마스크 상업광고",
     },
     {
       img: "/main/story6.png",
-      writer: "유해령",
+      writer: "박예진",
       name: "디지털 배너 공익광고",
     },
   ],
