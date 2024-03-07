@@ -7,23 +7,22 @@ import RadialChart from "./RadialChart";
 import BarChart from "./BarChart";
 import BrandReputationIndex from "./BrandReputationIndex";
 import RelatedHashTag from "./RelatedHashTag";
-import TrendSearch from "./TrendSearch";
+import TrendPeopleSearch from "./TrendSearch";
 import RelatedContents from "./RelatedContents";
 import { useState } from "react";
 import TrendTop from "./TrendTop";
 import ToggleButton from "../common/ToggleButton";
 
-const TrendPage = () => {
+const ItemPage = () => {
   const [searchName, setSearchName] = useState("");
 
   return (
     <Layout>
-      <TrendSearch
-        title="인물"
-        description="검색량과 연관어 추이, 브랜드 평판 지수를 통해 인물에 대한 정보를 한 번에
-        확인할 수 있어요."
-        placeholder="예) 유재석, 라이즈, 최민식"
-        src="/trend/peopleAnalysis.svg"
+      <TrendPeopleSearch
+        title="아이템"
+        description="검색량과 연관어 추이, 네이버쇼핑 키워드를 통해 한 번에 분석할 수 있어요."
+        placeholder="예) 홈 인테리어, 여행, 강아지"
+        src="/trend/itemAnalysis.svg"
         setSearchName={setSearchName}
       />
 
@@ -63,14 +62,7 @@ const TrendPage = () => {
           </ContentWrapper>
 
           <ContentWrapper width="87.5rem">
-            <TitleBox>
-              <Title>관련 콘텐츠</Title>
-              <ToggleButton items={["최신순", "인기순"]} />
-            </TitleBox>
-            <RelatedContents />
-            <PlusButtonBox>
-              <Title>더보기</Title>
-            </PlusButtonBox>
+            <Title marginBottom="2.5rem">네이버 쇼핑 키워드</Title>
           </ContentWrapper>
         </>
       )}
@@ -78,7 +70,7 @@ const TrendPage = () => {
   );
 };
 
-export default TrendPage;
+export default ItemPage;
 
 const Layout = styled.div`
   display: flex;
@@ -121,7 +113,7 @@ const Title = styled.div<{ marginBottom?: string }>`
   gap: 0.0625rem;
   border-radius: 1.875rem;
   background: #383838;
-  color: ${colors.white};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -138,15 +130,4 @@ const InlineContent = styled.div`
   //   width: 90%;
   //   height: 100%;
   //   margin: 6rem auto 0 auto; // 임시로
-`;
-
-const PlusButtonBox = styled.div`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  margin-top: 5rem;
-  > div {
-    background: #252525;
-    color: #b4b4b4;
-  }
 `;

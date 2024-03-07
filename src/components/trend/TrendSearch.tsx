@@ -7,12 +7,16 @@ import { recentSearchData } from "@/lib/trend/trendData";
 import { useState } from "react";
 
 interface TrendPeopleSearchProps {
+  title: string;
+  description: string;
+  placeholder: string;
+  src: string;
   setSearchName: (name: string) => void;
 }
 
-const TrendPeopleSearch = (props: TrendPeopleSearchProps) => {
+const TrendSearch = (props: TrendPeopleSearchProps) => {
   const [name, setName] = useState("");
-  const { setSearchName } = props;
+  const { title, description, placeholder, src, setSearchName } = props;
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -25,26 +29,18 @@ const TrendPeopleSearch = (props: TrendPeopleSearchProps) => {
     <Layout>
       <SubTitle>트렌드 분석</SubTitle>
       <ImageBox>
-        <Image
-          src="/trend/peopleAnalysis.svg"
-          alt="peopleAnalysis"
-          width={200}
-          height={200}
-        />
+        <Image src={src} alt="peopleAnalysis" width={200} height={200} />
       </ImageBox>
-      <Title>인물 분석</Title>
+      <Title>{title} 분석</Title>
 
-      <Description>
-        검색량과 연관어 추이, 브랜드 평판 지수를 통해 인물에 대한 정보를 한 번에
-        확인할 수 있어요.
-      </Description>
+      <Description>{description}</Description>
 
       <SearchBarBox>
         <SearchImage>
           <Image src="/common/search.svg" alt="search" width={20} height={20} />
         </SearchImage>
         <SearchBar
-          placeholder="예) 유재석, 라이즈, 최민식"
+          placeholder={placeholder}
           value={name}
           onChange={(e) => setName(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -60,7 +56,7 @@ const TrendPeopleSearch = (props: TrendPeopleSearchProps) => {
   );
 };
 
-export default TrendPeopleSearch;
+export default TrendSearch;
 
 const Layout = styled.div`
   display: flex;
