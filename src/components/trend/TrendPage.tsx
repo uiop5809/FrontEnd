@@ -5,16 +5,15 @@ import { LineChart } from "./LineChart";
 import { colors } from "@/styles/theme";
 import RadialChart from "./RadialChart";
 import BarChart from "./BarChart";
-import AgeSearch from "./AgeSearch";
 import BrandReputationIndex from "./BrandReputationIndex";
 import RelatedHashTag from "./RelatedHashTag";
-import TrendSearch from "./TrendSearch";
+import TrendPeopleSearch from "./TrendPeopleSearch";
 import RelatedContents from "./RelatedContents";
 
 const TrendPage = async () => {
   return (
     <Layout>
-      <TrendSearch />
+      <TrendPeopleSearch />
 
       <ContentWrapper width="87.5rem">
         <Title marginBottom="2.5rem">검색량 추이</Title>
