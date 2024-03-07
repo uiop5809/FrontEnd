@@ -11,6 +11,7 @@ import TrendPeopleSearch from "./TrendPeopleSearch";
 import RelatedContents from "./RelatedContents";
 import { useState } from "react";
 import TrendTop from "./TrendTop";
+import ToggleButton from "./ToggleButton";
 
 const TrendPage = () => {
   const [searchName, setSearchName] = useState("");
@@ -28,7 +29,10 @@ const TrendPage = () => {
           </SearchText>
 
           <ContentWrapper width="87.5rem">
-            <Title marginBottom="2.5rem">검색량 추이</Title>
+            <TitleBox>
+              <Title>검색량 추이</Title>
+              <ToggleButton />
+            </TitleBox>
             <LineChart />
           </ContentWrapper>
 
@@ -56,7 +60,7 @@ const TrendPage = () => {
             <Title marginBottom="2.5rem">관련 콘텐츠</Title>
             <RelatedContents />
             <PlusButtonBox>
-              <Title marginBottom="0">더보기</Title>
+              <Title>더보기</Title>
             </PlusButtonBox>
           </ContentWrapper>
         </>
@@ -92,7 +96,15 @@ const ContentWrapper = styled.div<{ width: string }>`
   border-radius: 1.875rem;
   background: #212121;
 `;
-const Title = styled.div<{ marginBottom: string }>`
+
+const TitleBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+`;
+
+const Title = styled.div<{ marginBottom?: string }>`
   display: inline-flex;
   padding: 0.6875rem 1.5rem;
   justify-content: center;
