@@ -66,6 +66,7 @@ const SrcButton = styled.button`
   font-size: 0.8rem;
   border: none;
   background: ${({ theme }) => theme.colors.main};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 const DateText = styled.div`
