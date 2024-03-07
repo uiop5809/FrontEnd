@@ -1,9 +1,11 @@
-export const ContainerAnimation = {
-  hidden: { opacity: 0 },
-  visible: {
+export const NavbarVariants = {
+  offscreen: {
+    opacity: 0,
+  },
+  onscreen: {
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 0.2,
     },
   },
 };
