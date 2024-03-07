@@ -11,7 +11,7 @@ import TrendPeopleSearch from "./TrendPeopleSearch";
 import RelatedContents from "./RelatedContents";
 import { useState } from "react";
 import TrendTop from "./TrendTop";
-import ToggleButton from "./ToggleButton";
+import ToggleButton from "../common/ToggleButton";
 
 const TrendPage = () => {
   const [searchName, setSearchName] = useState("");
@@ -31,7 +31,7 @@ const TrendPage = () => {
           <ContentWrapper width="87.5rem">
             <TitleBox>
               <Title>검색량 추이</Title>
-              <ToggleButton />
+              <ToggleButton items={["일별", "월별", "주별"]} />
             </TitleBox>
             <LineChart />
           </ContentWrapper>
@@ -57,7 +57,10 @@ const TrendPage = () => {
           </ContentWrapper>
 
           <ContentWrapper width="87.5rem">
-            <Title marginBottom="2.5rem">관련 콘텐츠</Title>
+            <TitleBox>
+              <Title>관련 콘텐츠</Title>
+              <ToggleButton items={["최신순", "인기순"]} />
+            </TitleBox>
             <RelatedContents />
             <PlusButtonBox>
               <Title>더보기</Title>
