@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { subtitleData, titleData } from "@/lib/navbar/navbarData";
 import NOSSR from "../common/NOSSR";
 import { useRouter } from "next/navigation";
@@ -50,10 +50,28 @@ export default function Navbar() {
     }
   };
 
+  const handleOutsideClick = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!target.closest("#indexBox") && openNavbar) {
+      setOpenNavbar(false);
+    }
+  };
+
+  useEffect(() => {
+    if (openNavbar) {
+      document.addEventListener("click", handleOutsideClick);
+    } else {
+      document.removeEventListener("click", handleOutsideClick);
+    }
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [openNavbar]);
+
   return (
     <>
       <NOSSR>
-        <Layout>
+        <Layout onClick={(e) => e.stopPropagation()}>
           <LogoBox>
             <Logo
               src={"/navbar/kobaco_logo.svg"}
