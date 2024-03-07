@@ -13,7 +13,12 @@ const RelatedContent = (props: RelatedContentProps) => {
   return (
     <Layout>
       <TopBox>
-        <Image src="trend/content.svg" alt="content" width={100} height={100} />
+        <Image
+          src="/trend/content.svg"
+          alt="content"
+          width={100}
+          height={100}
+        />
       </TopBox>
       <BottomBox>
         <Title>{title}</Title>
