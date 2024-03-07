@@ -5,6 +5,7 @@ import { styled } from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";
+import ToggleButton from "../common/ToggleButton";
 
 const TrendTop = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -12,11 +13,7 @@ const TrendTop = () => {
 
   return (
     <Layout>
-      <PeriodBox>
-        <div>최근 1주일</div>
-        <div>최근 1개월</div>
-        <div>최근 6개월</div>
-      </PeriodBox>
+      <ToggleButton items={["최근 1주일", "최근 1개월", "최근 6개월"]} />
 
       <DateBox>
         <DateContainer>
@@ -65,17 +62,6 @@ const Layout = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 87.5rem;
-`;
-
-const PeriodBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 4rem;
-  padding: 1rem 2.5rem;
-  background: #262626;
-  color: #b4b4b4;
-  border-radius: 100px;
-  cursor: pointer;
 `;
 
 const DateBox = styled.div`
