@@ -82,6 +82,7 @@ const Title = styled.div<{ marginBottom: string }>`
   line-height: normal;
   margin-bottom: ${(props) => props.marginBottom};
 `;
+
 const InlineContent = styled.div`
   display: inline-flex;
   gap: 1.56rem;
