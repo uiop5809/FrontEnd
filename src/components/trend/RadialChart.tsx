@@ -5,16 +5,16 @@ import Chart from "react-apexcharts";
 import styled from "styled-components";
 
 const RadialChart = () => {
-  const [series, setSeries] = useState([56, 44]);
+  const [series, setSeries] = useState<number[]>([56, 44]);
 
   const options = {
     colors: [colors.main, colors.secondary],
     labels: [` 여성 ${series[0]}%`, ` 남성 ${series[1]}%`],
     legend: {
       show: true,
-      position: "left",
+      position: "left" as "left",
       floating: true,
-      fontSize: 14,
+      fontSize: "14px",
       fontFamily: "Noto Sans KR",
       fontWeight: 400,
       labels: {
@@ -70,7 +70,7 @@ const RadialChart = () => {
     //   },
     // },
     stroke: {
-      lineCap: "round",
+      lineCap: "round" as "round",
     },
   };
 
