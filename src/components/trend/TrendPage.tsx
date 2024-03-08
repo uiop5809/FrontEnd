@@ -23,7 +23,7 @@ const TrendPage = () => {
         description="검색량과 연관어 추이, 브랜드 평판 지수를 통해 인물에 대한 정보를 한 번에
         확인할 수 있어요."
         placeholder="예) 유재석, 라이즈, 최민식"
-        src="/trend/peopleAnalysis.svg"
+        src="/trend/peopleAnalysis.png"
         setSearchName={setSearchName}
       />
 
