@@ -42,7 +42,7 @@ export const Toggle: React.FC<ToggleProps> = ({ optionData, placeholder }) => {
           style={{ float: "right" }}
         />
       </Label>
-      <SelectOptions show={showOptions}>
+      <SelectOptions show={showOptions} optionData={optionData}>
         {optionData.map((v, i) => (
           <Option key={i} value={v} onClick={handleOnChangeSelectValue}>
             {v}
@@ -80,13 +80,14 @@ const Label = styled.label<{ notFocus: boolean }>`
   font-weight: 500;
   line-height: normal;
 `;
-const SelectOptions = styled.ul<{ show: boolean }>`
+const SelectOptions = styled.ul<{ show: boolean; optionData: string[] }>`
   position: absolute;
   list-style: none;
   top: 3.625rem;
   left: 0;
   width: 100%;
-  overflow: hidden;
+  height: ${(props) => (props.optionData.length > 3 ? "11.25rem" : "")};
+  overflow-y: auto;
   max-height: ${(props) => (props.show ? "none" : "0")};
   padding: ${(props) => (props.show ? "1rem 0" : "0")};
   border-radius: 1.3125rem;
@@ -100,7 +101,6 @@ const Option = styled.li`
   font-weight: 500;
   line-height: normal;
   padding: 0.5rem 2rem;
-  transition: background-color 0.2s ease-in;
   &:hover {
     background-color: ${colors.main};
   }
