@@ -1,7 +1,7 @@
 import AdCopyPage from "@/components/adCopy/AdCopyPage";
 import NOSSR from "@/components/common/NOSSR";
 
-const AdCopy = async () => {
+const CreateAdCopy = async () => {
   return (
     <NOSSR>
       <AdCopyPage />
@@ -9,4 +9,4 @@ const AdCopy = async () => {
   );
 };
 
-export default AdCopy;
+export default CreateAdCopy;
