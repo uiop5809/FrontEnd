@@ -2,7 +2,6 @@
 
 import styled from "styled-components";
 import { LineChart } from "./LineChart";
-import { colors } from "@/styles/theme";
 import RadialChart from "./RadialChart";
 import BarChart from "./BarChart";
 import BrandReputationIndex from "./BrandReputationIndex";
@@ -22,7 +21,7 @@ const ItemPage = () => {
         title="아이템"
         description="검색량과 연관어 추이, 네이버쇼핑 키워드를 통해 한 번에 분석할 수 있어요."
         placeholder="예) 홈 인테리어, 여행, 강아지"
-        src="/trend/itemAnalysis.svg"
+        src="/trend/itemAnalysis.png"
         setSearchName={setSearchName}
       />
 
