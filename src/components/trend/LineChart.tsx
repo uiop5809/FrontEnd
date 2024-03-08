@@ -149,7 +149,7 @@ export function LineChart() {
       },
       tooltip: {
         enabled: true,
-        mode: "index", // 가까워지면 툴팁 나타남
+        mode: "index" as "index", // 가까워지면 툴팁 나타남
         intersect: false,
         displayColors: false,
         backgroundColor: colors.main,
@@ -157,11 +157,11 @@ export function LineChart() {
         titleFont: {
           fontFamily: "Noto Sans KR",
           fontSize: 14,
-          weight: "light",
+          weight: 400,
         },
         titleSpacing: 0.14,
         titleMarginBottom: 4,
-        bodyFont: { fontFamily: "Noto Sans KR", fontSize: 14, weight: "bold" },
+        bodyFont: { fontFamily: "Noto Sans KR", fontSize: 14, weight: 700 },
         bodySpacing: 2,
         padding: {
           top: 15,
@@ -188,7 +188,6 @@ export function LineChart() {
       },
     },
     interaction: {
-      mode: "index",
       intersect: true,
       axes: "x",
     },

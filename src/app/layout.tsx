@@ -32,7 +32,7 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <Navbar />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </ThemeProvider>
         </RecoilContextProvider>
       </body>
