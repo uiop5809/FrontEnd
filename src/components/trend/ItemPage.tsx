@@ -7,10 +7,10 @@ import BarChart from "./BarChart";
 import BrandReputationIndex from "./BrandReputationIndex";
 import RelatedHashTag from "./RelatedHashTag";
 import TrendPeopleSearch from "./TrendSearch";
-import RelatedContents from "./RelatedContents";
 import { useState } from "react";
 import TrendTop from "./TrendTop";
 import ToggleButton from "../common/ToggleButton";
+import RelatedRankChange from "./RelatedRankChange";
 
 const ItemPage = () => {
   const [searchName, setSearchName] = useState("");
@@ -50,8 +50,8 @@ const ItemPage = () => {
               <BarChart />
             </ContentWrapper>
             <ContentWrapper width="28.125rem">
-              <Title marginBottom="1.88rem">브랜드 평판 지수</Title>
-              <BrandReputationIndex />
+              <Title marginBottom="1.88rem">연관어 순위 변화</Title>
+              <RelatedRankChange />
             </ContentWrapper>
           </InlineContent>
 
