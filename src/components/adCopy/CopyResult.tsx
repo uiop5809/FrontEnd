@@ -7,10 +7,105 @@ import Image from "next/image";
 import { useState } from "react";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
+interface CopyItem {
+  category: string;
+  tone: string;
+  copyText: string;
+}
+
+const data = [
+  {
+    category: "헤드카피",
+    tone: "언어유희형",
+    copyText: "내가 사는 지역을 더 살기 좋게, 더 매력 있게",
+  },
+  {
+    category: "헤드카피",
+    tone: "언어유희형",
+    copyText: "내가 사는 지역을 더 살기 좋게, 더 매력 있게2",
+  },
+  {
+    category: "헤드카피",
+    tone: "언어유희형",
+    copyText: "내가 사는 지역을 더 살기 좋게, 더 매력 있게3",
+  },
+  {
+    category: "헤드카피",
+    tone: "언어유희형",
+    copyText: "내가 사는 지역을 더 살기 좋게, 더 매력 있게4",
+  },
+  {
+    category: "헤드카피",
+    tone: "언어유희형",
+    copyText: "내가 사는 지역을 더 살기 좋게, 더 매력 있게5",
+  },
+  {
+    category: "헤드카피",
+    tone: "언어유희형",
+    copyText: "내가 사는 지역을 더 살기 좋게, 더 매력 있게6",
+  },
+];
 const CopyResult = () => {
   const size = useWindowSize();
 
   const [categoryIndex, setCategoryIndex] = useState(0);
+
+  const [editingStates, setEditingStates] = useState(
+    data.map((data) => ({ isEditing: false, text: data.copyText }))
+  );
+
+  const [currentSave, setCurrentSave] = useState<CopyItem[]>([]);
+  const [bookmarkedItems, setBookmarkedItems] = useState<number[]>([]);
+
+  const handleEditClick = (index: number) => {
+    setEditingStates((prevStates) =>
+      prevStates.map((state, i) =>
+        i === index ? { ...state, isEditing: !state.isEditing } : state
+      )
+    );
+  };
+
+  const handleCancelClick = (index: number) => {
+    setEditingStates((prevStates) =>
+      prevStates.map((state, i) =>
+        i === index ? { ...state, isEditing: false } : state
+      )
+    );
+  };
+
+  const handleSaveClick = (index: number) => {
+    console.log("Text saved:", editingStates[index].text);
+    setEditingStates((prevStates) =>
+      prevStates.map((state, i) =>
+        i === index ? { ...state, isEditing: false } : state
+      )
+    );
+    const newData = [...data];
+    newData[index].copyText = editingStates[index].text;
+  };
+
+  const handleTextChange = (index: number, newText: string) => {
+    setEditingStates((prevStates) =>
+      prevStates.map((state, i) =>
+        i === index ? { ...state, text: newText } : state
+      )
+    );
+  };
+
+  // 현재 북마크 취소는 순서대로 누른 경우만..!
+  const handleBookmarkClick = (index: number) => {
+    setBookmarkedItems((prevItems) =>
+      prevItems.includes(index)
+        ? prevItems.filter((item) => item !== index)
+        : [...prevItems, index]
+    );
+    setCurrentSave((prevSave) =>
+      prevSave.some((item) => item === data[index])
+        ? prevSave.filter((item) => item !== data[index])
+        : [...prevSave, data[index]]
+    );
+  };
+
   return (
     <BoxWrapper>
       <BoxHeader>
@@ -40,129 +135,141 @@ const CopyResult = () => {
       </BoxHeader>
       {categoryIndex == 0 ? (
         <BoxContents style={{ height: size.height * 0.65 }}>
-          <CopyWrapper>
-            <TagWrapper>
-              <Tag color={colors.main} background={colors.mainLight6}>
-                헤드 카피
-              </Tag>
-              <Tag color={colors.grey1} background={colors.grey5}>
-                언어유희형
-              </Tag>
-            </TagWrapper>
-            ‘내가 사는 지역을 더 살기 좋게, 더 매력 있게’
-            <EditWrapper>
-              <Image src="/adCopy/edit.svg" alt="edit" width={24} height={24} />
-              <Image
-                src="/adCopy/bookmark.svg"
-                alt="save"
-                width={24}
-                height={24}
-              />
-            </EditWrapper>
-          </CopyWrapper>
-          <CopyWrapper>
-            <TagWrapper>
-              <Tag color={colors.main} background={colors.mainLight6}>
-                헤드 카피
-              </Tag>
-              <Tag color={colors.grey1} background={colors.grey5}>
-                언어유희형
-              </Tag>
-            </TagWrapper>
-            ‘내가 사는 지역을 더 살기 좋게, 더 매력 있게’
-            <EditWrapper>
-              <Image src="/adCopy/edit.svg" alt="edit" width={24} height={24} />
-              <Image
-                src="/adCopy/bookmark.svg"
-                alt="save"
-                width={24}
-                height={24}
-              />
-            </EditWrapper>
-          </CopyWrapper>
-          <CopyWrapper>
-            <TagWrapper>
-              <Tag color={colors.main} background={colors.mainLight6}>
-                헤드 카피
-              </Tag>
-              <Tag color={colors.grey1} background={colors.grey5}>
-                언어유희형
-              </Tag>
-            </TagWrapper>
-            ‘내가 사는 지역을 더 살기 좋게, 더 매력 있게’
-            <EditWrapper>
-              <Image src="/adCopy/edit.svg" alt="edit" width={24} height={24} />
-              <Image
-                src="/adCopy/bookmark.svg"
-                alt="save"
-                width={24}
-                height={24}
-              />
-            </EditWrapper>
-          </CopyWrapper>
-          <CopyWrapper>
-            <TagWrapper>
-              <Tag color={colors.main} background={colors.mainLight6}>
-                헤드 카피
-              </Tag>
-              <Tag color={colors.grey1} background={colors.grey5}>
-                언어유희형
-              </Tag>
-            </TagWrapper>
-            ‘내가 사는 지역을 더 살기 좋게, 더 매력 있게’
-            <EditWrapper>
-              <Image src="/adCopy/edit.svg" alt="edit" width={24} height={24} />
-              <Image
-                src="/adCopy/bookmark.svg"
-                alt="save"
-                width={24}
-                height={24}
-              />
-            </EditWrapper>
-          </CopyWrapper>
-          <CopyWrapper>
-            <TagWrapper>
-              <Tag color={colors.main} background={colors.mainLight6}>
-                헤드 카피
-              </Tag>
-              <Tag color={colors.grey1} background={colors.grey5}>
-                언어유희형
-              </Tag>
-            </TagWrapper>
-            ‘내가 사는 지역을 더 살기 좋게, 더 매력 있게’
-            <EditWrapper>
-              <Image src="/adCopy/edit.svg" alt="edit" width={24} height={24} />
-              <Image
-                src="/adCopy/bookmark.svg"
-                alt="save"
-                width={24}
-                height={24}
-              />
-            </EditWrapper>
-          </CopyWrapper>
-          <CopyWrapper>
-            <TagWrapper>
-              <Tag color={colors.main} background={colors.mainLight6}>
-                헤드 카피
-              </Tag>
-              <Tag color={colors.grey1} background={colors.grey5}>
-                언어유희형
-              </Tag>
-            </TagWrapper>
-            ‘내가 사는 지역을 더 살기 좋게, 더 매력 있게’
-            <EditWrapper>
-              <Image src="/adCopy/edit.svg" alt="edit" width={24} height={24} />
-              <Image
-                src="/adCopy/bookmark.svg"
-                alt="save"
-                width={24}
-                height={24}
-              />
-            </EditWrapper>
-          </CopyWrapper>
+          {data.map((v, i) => (
+            <CopyWrapper key={i}>
+              <TagWrapper>
+                <Tag color={colors.main} background={colors.mainLight6}>
+                  {v.category}
+                </Tag>
+                <Tag color={colors.grey1} background={colors.grey5}>
+                  {v.tone}
+                </Tag>
+              </TagWrapper>
+              {editingStates[i].isEditing ? (
+                <EditBox
+                  value={editingStates[i].text}
+                  onChange={(e) => handleTextChange(i, e.target.value)}
+                />
+              ) : (
+                <>‘{v.copyText}’</>
+              )}
+              <EditWrapper>
+                {editingStates[i].isEditing ? (
+                  <>
+                    <BottomText
+                      onClick={() => handleCancelClick(i)}
+                      color={colors.grey1}
+                    >
+                      취소
+                    </BottomText>
+                    <BottomText
+                      onClick={() => handleSaveClick(i)}
+                      color={colors.main}
+                    >
+                      완료
+                    </BottomText>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src="/adCopy/edit.svg"
+                      alt="edit"
+                      width={24}
+                      height={24}
+                      onClick={() => handleEditClick(i)}
+                      style={{ cursor: "pointer" }}
+                    />
+                    <Image
+                      src={
+                        bookmarkedItems.includes(i)
+                          ? "/adCopy/bookmarkRed.svg"
+                          : "/adCopy/bookmark.svg"
+                      }
+                      alt="save"
+                      width={24}
+                      height={24}
+                      onClick={() => handleBookmarkClick(i)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </>
+                )}
+              </EditWrapper>
+            </CopyWrapper>
+          ))}
         </BoxContents>
       ) : (
-        <></>
+        <BoxContents style={{ height: size.height * 0.65 }}>
+          {currentSave.map((v, i) => (
+            <CopyWrapper key={i}>
+              <TagWrapper>
+                <Tag color={colors.main} background={colors.mainLight6}>
+                  {v.category}
+                </Tag>
+                <Tag color={colors.grey1} background={colors.grey5}>
+                  {v.tone}
+                </Tag>
+              </TagWrapper>
+              {editingStates[i].isEditing ? (
+                <EditBox
+                  value={editingStates[i].text}
+                  onChange={(e) => handleTextChange(i, e.target.value)}
+                />
+              ) : (
+                <>‘{v.copyText}’</>
+              )}
+              <EditWrapper>
+                {editingStates[i].isEditing ? (
+                  <>
+                    <BottomText
+                      onClick={() => handleCancelClick(i)}
+                      color={colors.grey1}
+                    >
+                      취소
+                    </BottomText>
+                    <BottomText
+                      onClick={() => handleSaveClick(i)}
+                      color={colors.main}
+                    >
+                      완료
+                    </BottomText>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src="/adCopy/edit.svg"
+                      alt="edit"
+                      width={24}
+                      height={24}
+                      onClick={() => handleEditClick(i)}
+                      style={{ cursor: "pointer" }}
+                    />
+                    <Image
+                      src={
+                        bookmarkedItems.includes(i)
+                          ? "/adCopy/bookmarkRed.svg"
+                          : "/adCopy/bookmark.svg"
+                      }
+                      alt="save"
+                      width={24}
+                      height={24}
+                      onClick={() => handleBookmarkClick(i)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </>
+                )}
+              </EditWrapper>
+            </CopyWrapper>
+          ))}
+          <MoreRegion>
+            <Button
+              text={"#b4b4b4"}
+              background={"#252525"}
+              style={{ height: "2.75rem", border: "none" }}
+            >
+              더보기
+            </Button>
+          </MoreRegion>
+        </BoxContents>
       )}
     </BoxWrapper>
   );
@@ -221,12 +328,13 @@ const BoxContents = styled.div`
 const CopyWrapper = styled.div`
   display: flex;
   width: 49%;
+  height: 12.5rem;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 0.875rem;
   background: ${colors.grey0};
   padding: 1rem;
-  color: var(--Basic-White, #fff);
+  color: ${colors.white};
   text-align: center;
   font-size: 0.9375rem;
   font-style: normal;
@@ -258,4 +366,31 @@ const EditWrapper = styled.div`
   justify-content: end;
   gap: 0.62rem;
   margin-top: 2.75rem;
+`;
+const BottomText = styled.div<{ color: string }>`
+  color: ${(props) => props.color};
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+`;
+const EditBox = styled.textarea`
+  resize: none;
+  height: 1.375rem;
+  background-color: ${colors.grey0};
+  border: none;
+  outline: none;
+  color: ${colors.white};
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.375rem;
+`;
+const MoreRegion = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
