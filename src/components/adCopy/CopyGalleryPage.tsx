@@ -8,6 +8,7 @@ import GalleryCards from "./GalleryCards";
 import Link from "next/link";
 import { Button } from "../common/ButtonStyle";
 import { colors } from "@/styles/theme";
+import Image from "next/image";
 
 const CopyGalleryPage = async () => {
   const [searchName, setSearchName] = useState("");
@@ -20,9 +21,15 @@ const CopyGalleryPage = async () => {
         <Button
           background={colors.main}
           text={colors.white}
-          style={{ marginTop: "5rem", marginBottom: "13rem" }}
+          style={{ marginTop: "5rem", marginBottom: "13rem", gap: "0.25rem" }}
         >
           새 카피 만들기
+          <Image
+            src={"/main/arrow-right.svg"}
+            alt="right-arrow"
+            width={18}
+            height={18}
+          />
         </Button>
       </Link>
     </Layout>
