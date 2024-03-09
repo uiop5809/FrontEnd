@@ -8,6 +8,7 @@ import { Toggle } from "../common/Toggle";
 import Image from "next/image";
 
 const genderOption = ["전체", "남성", "여성"];
+const genderENUM = ["ALL", "MALE", "FEMALE"];
 const ageOption = [
   "전체",
   "0~9세",
@@ -16,36 +17,33 @@ const ageOption = [
   "30~39세",
   "40~49세",
   "50~59세",
-  "60~69세",
-  "70세 이상",
+  "60세 이상",
 ];
-
+const ageENUM = [
+  "ALL",
+  "ZERO",
+  "TEN",
+  "TWENTY",
+  "THIRTY",
+  "FORTY",
+  "FIFTY",
+  "SIXTY",
+];
+const toneENUM = [
+  "DEFAULT",
+  "WORDPLAY",
+  "ACTION",
+  "REVIEW",
+  "WARNING",
+  "EMOTIONAL",
+  "PROBLEM",
+  "QUESTION",
+];
 const CopyMaker = () => {
   const size = useWindowSize();
 
-  // 백엔드에 보낼 데이터 (Form submit 용)
-  const [values, setValues] = useState({
-    category: "", // 서비스 선택: 헤드/바디
-    projectName: "", // 프로젝트명
-    serviceName: "", // 상품/서비스명
-    targetGender: "", // 성별
-    targetAge: "", // 연령대
-    keyword: "", //키워드
-    toneManner: "", // 톤앤매너
-  });
-  const handleChange = (e: any) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   // 생성 버튼 disabled 인지 아닌지
   const [canSubmit, setCanSubmit] = useState(false);
-  useEffect(() => {
-    const isFull = Object.values(values).every((value) => value.trim() !== "");
-    setCanSubmit(isFull);
-  }, [values]);
 
   const [focused, setFocused] = useState("");
   // 포커스 상태 변경 함수
@@ -63,6 +61,8 @@ const CopyMaker = () => {
     category === opt ? setCategory("") : setCategory(opt);
   };
 
+  const [targetGender, setTargetGender] = useState("성별 선택");
+  const [targetAge, setTargetAge] = useState("연령대 선택");
   // 키워드
   const [keywords, setKeywords] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -87,7 +87,61 @@ const CopyMaker = () => {
   };
 
   // 톤앤매너
-  const [toneManner, setToneManner] = useState<number>(0);
+  const [tone, setTone] = useState<number>(0);
+
+  // 백엔드에 보낼 데이터 (Form submit 용)
+  const [values, setValues] = useState({
+    service: category, // 서비스 선택: 헤드/바디
+    projectName: "", // 프로젝트명
+    productName: "", // 상품/서비스명
+    targetGender: genderENUM[genderOption.indexOf(targetGender)], // 성별
+    targetAge: ageENUM[ageOption.indexOf(targetAge)], // 연령대
+    keyword: keywords, //키워드
+    tone: toneENUM[tone], // 톤앤매너
+  });
+
+  useEffect(() => {
+    const isFull = Object.values(values).every((value) => value !== "");
+    setCanSubmit(isFull);
+  }, [values]);
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
+    if (name === "service") {
+      setValues({
+        ...values,
+        [name]: value,
+      });
+    } else if (name === "projectName" || name === "productName") {
+      setValues({
+        ...values,
+        [name]: value,
+      });
+    } else if (name === "targetGender") {
+      const index = genderOption.indexOf(value);
+
+      setValues({
+        ...values,
+        [name]: genderENUM[index],
+      });
+    } else if (name === "targetAge") {
+      const index = ageOption.indexOf(value);
+
+      setValues({
+        ...values,
+        [name]: ageENUM[index],
+      });
+    } else if (name === "keyword") {
+    } else if (name === "tone") {
+      const index = toneENUM.indexOf(name);
+
+      setValues({
+        ...values,
+        [name]: toneENUM[index],
+      });
+    }
+  };
 
   return (
     <BoxWrapper style={{ height: size.height * 0.8 }}>
@@ -107,18 +161,18 @@ const CopyMaker = () => {
           서비스 선택
           <InlineContent gap="1rem">
             <SelectButton
-              active={category == "head"}
+              active={category == "HEAD"}
               color={colors.main}
               background={colors.mainLight6}
-              onClick={() => categoryClick("head")}
+              onClick={() => categoryClick("HEAD")}
             >
               헤드 카피
             </SelectButton>
             <SelectButton
-              active={category == "body"}
+              active={category == "BODY"}
               color={colors.secondary}
               background={colors.secondaryLight3}
-              onClick={() => categoryClick("body")}
+              onClick={() => categoryClick("BODY")}
             >
               바디 카피
             </SelectButton>
@@ -136,14 +190,14 @@ const CopyMaker = () => {
             autoComplete="off"
           />
         </Contents>
-        <Contents focus={focused} opt={"serviceName"}>
+        <Contents focus={focused} opt={"productName"}>
           상품/서비스 명
           <InputContent
             //required
             type="text"
-            name="serviceName"
+            name="productName"
             placeholder="예) 아이스크림"
-            onFocus={() => handleFocus("serviceName")}
+            onFocus={() => handleFocus("productName")}
             onBlur={handleBlur}
             autoComplete="off"
           />
@@ -151,8 +205,18 @@ const CopyMaker = () => {
         <Contents focus={""} opt={"target"}>
           타겟
           <InlineContent gap="1rem">
-            <Toggle optionData={genderOption} placeholder="성별 선택" />
-            <Toggle optionData={ageOption} placeholder="연령대 선택" />
+            <Toggle
+              optionData={genderOption}
+              placeholder="성별 선택"
+              currentValue={targetGender}
+              setCurrentValue={setTargetGender}
+            />
+            <Toggle
+              optionData={ageOption}
+              placeholder="연령대 선택"
+              currentValue={targetAge}
+              setCurrentValue={setTargetAge}
+            />
           </InlineContent>
         </Contents>
         <Contents focus={focused} opt={"keyword"}>
@@ -188,74 +252,74 @@ const CopyMaker = () => {
           톤 앤 매너
           <ToneRegion>
             <ToneButton
-              active={toneManner == 1}
+              active={tone == 1}
               color={colors.main}
               background="#212121"
-              onClick={() => setToneManner(1)}
+              onClick={() => setTone(1)}
             >
               기본형
             </ToneButton>
-            {category == "body" ? (
+            {category == "BODY" ? (
               <></>
             ) : (
               <ToneButton
-                active={toneManner == 2}
+                active={tone == 2}
                 color={colors.main}
                 background="#212121"
-                onClick={() => setToneManner(2)}
+                onClick={() => setTone(2)}
               >
                 언어유희형
               </ToneButton>
             )}
             <ToneButton
-              active={toneManner == 3}
+              active={tone == 3}
               color={colors.main}
               background="#212121"
-              onClick={() => setToneManner(3)}
+              onClick={() => setTone(3)}
             >
               행동촉구형
             </ToneButton>
             <ToneButton
-              active={toneManner == 4}
+              active={tone == 4}
               color={colors.main}
               background="#212121"
-              onClick={() => setToneManner(4)}
+              onClick={() => setTone(4)}
             >
               리뷰형
             </ToneButton>
 
             <ToneButton
-              active={toneManner == 5}
+              active={tone == 5}
               color={colors.main}
               background="#212121"
-              onClick={() => setToneManner(5)}
+              onClick={() => setTone(5)}
             >
               경고형
             </ToneButton>
             <ToneButton
-              active={toneManner == 6}
+              active={tone == 6}
               color={colors.main}
               background="#212121"
-              onClick={() => setToneManner(6)}
+              onClick={() => setTone(6)}
             >
               감정호소형
             </ToneButton>
             <ToneButton
-              active={toneManner == 7}
+              active={tone == 7}
               color={colors.main}
               background="#212121"
-              onClick={() => setToneManner(7)}
+              onClick={() => setTone(7)}
             >
               문제제기형
             </ToneButton>
-            {category == "body" ? (
+            {category == "BODY" ? (
               <></>
             ) : (
               <ToneButton
-                active={toneManner == 8}
+                active={tone == 8}
                 color={colors.main}
                 background="#212121"
-                onClick={() => setToneManner(8)}
+                onClick={() => setTone(8)}
               >
                 질문형
               </ToneButton>
