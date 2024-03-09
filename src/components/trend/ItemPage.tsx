@@ -12,6 +12,8 @@ import ToggleButton from "../common/ToggleButton";
 import RelatedRankChange from "./RelatedRankChange";
 import RecentSearchBox from "./RecentSearchBox";
 import { recentSearchData } from "@/lib/trend/trendData";
+import ShoppingList from "./ShoppingList";
+import Image from "next/image";
 
 const ItemPage = () => {
   const [searchName, setSearchName] = useState("");
@@ -66,6 +68,15 @@ const ItemPage = () => {
 
           <ContentWrapper width="87.5rem">
             <Title marginBottom="2.5rem">네이버 쇼핑 키워드</Title>
+            <InlineContent>
+              <Image
+                src="/trend/shoppingKeyword.png"
+                alt="keyword"
+                width={652}
+                height={449}
+              />
+              <ShoppingList />
+            </InlineContent>
           </ContentWrapper>
         </>
       )}
@@ -125,14 +136,10 @@ const Title = styled.div<{ marginBottom?: string }>`
 `;
 
 const InlineContent = styled.div`
+  width: 100%;
   display: inline-flex;
+  justify-content: center;
   gap: 1.56rem;
-  //   gap: 5rem;
-  //   justify-content: center;
-  //   align-items: center;
-  //   width: 90%;
-  //   height: 100%;
-  //   margin: 6rem auto 0 auto; // 임시로
 `;
 
 const TrendSearchBox = styled.div`

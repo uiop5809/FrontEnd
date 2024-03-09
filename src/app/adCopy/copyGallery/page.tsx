@@ -1,14 +1,14 @@
+import CopyGalleryPage from "@/components/adCopy/CopyGalleryPage";
 import NOSSR from "@/components/common/NOSSR";
 import Footer from "@/components/footer/Footer";
-import ItemPage from "@/components/trend/ItemPage";
 
-const Item = async () => {
+const CopyGallery = async () => {
   return (
     <NOSSR>
-      <ItemPage />
+      <CopyGalleryPage />
       <Footer />
     </NOSSR>
   );
 };
 
-export default Item;
+export default CopyGallery;
