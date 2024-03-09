@@ -1,6 +1,6 @@
 "use client";
 
-import { ContainerAnimation } from "@/styles/animation";
+import { NavbarVariants } from "@/styles/animation";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -9,9 +9,7 @@ interface ContainerProps {
 }
 
 const Container = ({ children }: ContainerProps) => {
-  return (
-    <ContainerStyle variants={ContainerAnimation}>{children}</ContainerStyle>
-  );
+  return <ContainerStyle variants={NavbarVariants}>{children}</ContainerStyle>;
 };
 
 export default Container;
