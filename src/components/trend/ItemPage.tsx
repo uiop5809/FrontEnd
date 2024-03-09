@@ -4,13 +4,14 @@ import styled from "styled-components";
 import { LineChart } from "./LineChart";
 import RadialChart from "./RadialChart";
 import BarChart from "./BarChart";
-import BrandReputationIndex from "./BrandReputationIndex";
 import RelatedHashTag from "./RelatedHashTag";
-import TrendPeopleSearch from "./TrendSearch";
+import TrendSearch from "./PeopleSearch";
 import { useState } from "react";
 import TrendTop from "./TrendTop";
 import ToggleButton from "../common/ToggleButton";
 import RelatedRankChange from "./RelatedRankChange";
+import RecentSearchBox from "./RecentSearchBox";
+import { recentSearchData } from "@/lib/trend/trendData";
 import ShoppingList from "./ShoppingList";
 import Image from "next/image";
 
@@ -19,13 +20,16 @@ const ItemPage = () => {
 
   return (
     <Layout>
-      <TrendPeopleSearch
-        title="아이템"
-        description="검색량과 연관어 추이, 네이버쇼핑 키워드를 통해 한 번에 분석할 수 있어요."
-        placeholder="예) 홈 인테리어, 여행, 강아지"
-        src="/trend/itemAnalysis.png"
-        setSearchName={setSearchName}
-      />
+      <TrendSearchBox>
+        <TrendSearch
+          title="아이템"
+          description="검색량과 연관어 추이, 네이버쇼핑 키워드를 통해 한 번에 분석할 수 있어요."
+          placeholder="예) 홈 인테리어, 여행, 강아지"
+          src="/trend/itemAnalysis.png"
+          setSearchName={setSearchName}
+        />
+        <RecentSearchBox data={recentSearchData} />
+      </TrendSearchBox>
 
       {searchName !== "" && (
         <>
@@ -136,4 +140,10 @@ const InlineContent = styled.div`
   display: inline-flex;
   justify-content: center;
   gap: 1.56rem;
+`;
+
+const TrendSearchBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
 `;
