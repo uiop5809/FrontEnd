@@ -10,19 +10,24 @@ import { useState } from "react";
 import TrendTop from "./TrendTop";
 import ToggleButton from "../common/ToggleButton";
 import RelatedRankChange from "./RelatedRankChange";
+import RecentSearchBox from "./RecentSearchBox";
+import { recentSearchData } from "@/lib/trend/trendData";
 
 const ItemPage = () => {
   const [searchName, setSearchName] = useState("");
 
   return (
     <Layout>
-      <TrendSearch
-        title="아이템"
-        description="검색량과 연관어 추이, 네이버쇼핑 키워드를 통해 한 번에 분석할 수 있어요."
-        placeholder="예) 홈 인테리어, 여행, 강아지"
-        src="/trend/itemAnalysis.png"
-        setSearchName={setSearchName}
-      />
+      <TrendSearchBox>
+        <TrendSearch
+          title="아이템"
+          description="검색량과 연관어 추이, 네이버쇼핑 키워드를 통해 한 번에 분석할 수 있어요."
+          placeholder="예) 홈 인테리어, 여행, 강아지"
+          src="/trend/itemAnalysis.png"
+          setSearchName={setSearchName}
+        />
+        <RecentSearchBox data={recentSearchData} />
+      </TrendSearchBox>
 
       {searchName !== "" && (
         <>
@@ -128,4 +133,10 @@ const InlineContent = styled.div`
   //   width: 90%;
   //   height: 100%;
   //   margin: 6rem auto 0 auto; // 임시로
+`;
+
+const TrendSearchBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
 `;
