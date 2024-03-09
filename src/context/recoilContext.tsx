@@ -5,12 +5,11 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-// recoil 예시
-// export const isEnglishState = atom({
-//   key: "isEnglish",
-//   default: +0,
-//   effects: [persistAtom],
-// });
+export const isLoggedInState = atom({
+  key: "isLoggedIn",
+  default: false,
+  effects: [persistAtom],
+});
 
 export default function RecoilContextProvider({
   children,
