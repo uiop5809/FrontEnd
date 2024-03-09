@@ -92,7 +92,7 @@ export default function Navbar() {
           </TitleBox>
 
           <AuthBox>
-            <div>로그인</div>
+            <div onClick={() => router.push("/user")}>로그인</div>
             <div>|</div>
             <div>회원가입</div>
           </AuthBox>
