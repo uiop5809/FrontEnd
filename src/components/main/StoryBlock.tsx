@@ -44,7 +44,7 @@ export default function StoryBlock() {
           whileHover="scaleUp"
           variants={Variants}
         >
-          새 카피 만들기
+          새 스토리보드 만들기
         </Button>
         <Button
           background={colors.mainLight6}
