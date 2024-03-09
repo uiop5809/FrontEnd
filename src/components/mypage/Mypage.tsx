@@ -20,7 +20,6 @@ export default Mypage;
 
 const Layout = styled.div`
   display: flex;
-  height: 80%;
   flex-direction: column;
   justify-content: center;
   padding: 5.5rem 6% 0 6%;
