@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { Button } from "../common/ButtonStyle";
 import { CardSlider } from "./CardSlider";
 import CopyModal from "./CopyModal";
+import Link from "next/link";
 
 export default function CopyBlock() {
   // 모달 버튼 클릭 유무를 저장할 state
@@ -38,24 +39,28 @@ export default function CopyBlock() {
           }
         </Description>
         <ButtonWrapper>
-          <Button
-            background={colors.main}
-            text={colors.white}
-            initial="default"
-            whileHover="scaleUp"
-            variants={Variants}
-          >
-            새 카피 만들기
-          </Button>
-          <Button
-            background={colors.mainLight6}
-            text={colors.main}
-            initial="default"
-            whileHover="scaleUp"
-            variants={Variants}
-          >
-            카피 갤러리
-          </Button>
+          <Link href="/adCopy/createAdCopy">
+            <Button
+              background={colors.main}
+              text={colors.white}
+              initial="default"
+              whileHover="scaleUp"
+              variants={Variants}
+            >
+              새 카피 만들기
+            </Button>
+          </Link>
+          <Link href="/adCopy/copyGallery">
+            <Button
+              background={colors.mainLight6}
+              text={colors.main}
+              initial="default"
+              whileHover="scaleUp"
+              variants={Variants}
+            >
+              카피 갤러리
+            </Button>
+          </Link>
         </ButtonWrapper>
         <GuideMiniTextBlock onClick={clickModal}>
           이용 가이드 보러가기

@@ -6,9 +6,16 @@ import styled from "styled-components";
 interface ToggleProps {
   optionData: string[];
   placeholder: string;
+  currentValue: string;
+  setCurrentValue: React.Dispatch<React.SetStateAction<string>>;
 }
-export const Toggle: React.FC<ToggleProps> = ({ optionData, placeholder }) => {
-  const [currentValue, setCurrentValue] = useState(placeholder);
+export const Toggle: React.FC<ToggleProps> = ({
+  optionData,
+  placeholder,
+  currentValue,
+  setCurrentValue,
+}) => {
+  //const [currentValue, setCurrentValue] = useState(placeholder);
   const [showOptions, setShowOptions] = useState(false);
 
   const handleFocus = (e: any) => {
