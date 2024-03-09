@@ -6,6 +6,7 @@ import { colors } from "@/styles/theme";
 import Image from "next/image";
 import { useState } from "react";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import Link from "next/link";
 
 interface CopyItem {
   category: string;
@@ -123,15 +124,17 @@ const CopyResult = () => {
             최근 저장한 항목
           </Category>
         </CategoryBox>
-        <Button text={colors.white} background={colors.main}>
-          카피 갤러리 바로가기
-          <Image
-            src={"/main/arrow-right.svg"}
-            alt="right-arrow"
-            width={18}
-            height={18}
-          />
-        </Button>
+        <Link href="/adCopy/copyGallery">
+          <Button text={colors.white} background={colors.main}>
+            카피 갤러리 바로가기
+            <Image
+              src={"/main/arrow-right.svg"}
+              alt="right-arrow"
+              width={18}
+              height={18}
+            />
+          </Button>
+        </Link>
       </BoxHeader>
       {categoryIndex == 0 ? (
         <BoxContents style={{ height: size.height * 0.65 }}>
