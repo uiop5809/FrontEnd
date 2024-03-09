@@ -187,15 +187,17 @@ const CopyMaker = () => {
         <Contents focus={""} opt={"none"}>
           톤 앤 매너
           <ToneRegion>
-            <InlineContent gap="0.5rem">
-              <ToneButton
-                active={toneManner == 1}
-                color={colors.main}
-                background="#212121"
-                onClick={() => setToneManner(1)}
-              >
-                기본형
-              </ToneButton>
+            <ToneButton
+              active={toneManner == 1}
+              color={colors.main}
+              background="#212121"
+              onClick={() => setToneManner(1)}
+            >
+              기본형
+            </ToneButton>
+            {category == "body" ? (
+              <></>
+            ) : (
               <ToneButton
                 active={toneManner == 2}
                 color={colors.main}
@@ -204,48 +206,51 @@ const CopyMaker = () => {
               >
                 언어유희형
               </ToneButton>
-              <ToneButton
-                active={toneManner == 3}
-                color={colors.main}
-                background="#212121"
-                onClick={() => setToneManner(3)}
-              >
-                행동촉구형
-              </ToneButton>
-              <ToneButton
-                active={toneManner == 4}
-                color={colors.main}
-                background="#212121"
-                onClick={() => setToneManner(4)}
-              >
-                리뷰형
-              </ToneButton>
-            </InlineContent>
-            <InlineContent gap="0.5rem">
-              <ToneButton
-                active={toneManner == 5}
-                color={colors.main}
-                background="#212121"
-                onClick={() => setToneManner(5)}
-              >
-                경고형
-              </ToneButton>
-              <ToneButton
-                active={toneManner == 6}
-                color={colors.main}
-                background="#212121"
-                onClick={() => setToneManner(6)}
-              >
-                감정호소형
-              </ToneButton>
-              <ToneButton
-                active={toneManner == 7}
-                color={colors.main}
-                background="#212121"
-                onClick={() => setToneManner(7)}
-              >
-                문제제기형
-              </ToneButton>
+            )}
+            <ToneButton
+              active={toneManner == 3}
+              color={colors.main}
+              background="#212121"
+              onClick={() => setToneManner(3)}
+            >
+              행동촉구형
+            </ToneButton>
+            <ToneButton
+              active={toneManner == 4}
+              color={colors.main}
+              background="#212121"
+              onClick={() => setToneManner(4)}
+            >
+              리뷰형
+            </ToneButton>
+
+            <ToneButton
+              active={toneManner == 5}
+              color={colors.main}
+              background="#212121"
+              onClick={() => setToneManner(5)}
+            >
+              경고형
+            </ToneButton>
+            <ToneButton
+              active={toneManner == 6}
+              color={colors.main}
+              background="#212121"
+              onClick={() => setToneManner(6)}
+            >
+              감정호소형
+            </ToneButton>
+            <ToneButton
+              active={toneManner == 7}
+              color={colors.main}
+              background="#212121"
+              onClick={() => setToneManner(7)}
+            >
+              문제제기형
+            </ToneButton>
+            {category == "body" ? (
+              <></>
+            ) : (
               <ToneButton
                 active={toneManner == 8}
                 color={colors.main}
@@ -254,7 +259,7 @@ const CopyMaker = () => {
               >
                 질문형
               </ToneButton>
-            </InlineContent>
+            )}
           </ToneRegion>
         </Contents>
       </BoxContent>
@@ -412,7 +417,8 @@ const ToneButton = styled.button<{
   background: string;
 }>`
   display: flex;
-  flex-grow: 1;
+  flex-grow: 0;
+  padding: 0.5rem 1.5rem;
   height: 2.5rem;
   justify-content: center;
   align-items: center;
@@ -435,7 +441,7 @@ const ToneButton = styled.button<{
 `;
 const ToneRegion = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   padding: 0 0.125rem;
   gap: 0.5rem;
   margin-bottom: 1rem;
