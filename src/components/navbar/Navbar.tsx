@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { NavbarVariants } from "@/styles/animation";
 import { isLoggedInState } from "@/context/recoilContext";
 import { useRecoilState } from "recoil";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
@@ -95,15 +96,17 @@ export default function Navbar() {
           </TitleBox>
           {isLoggedIn ? (
             <AuthBox>
-              <div onClick={() => setIsLoggedIn(true)}>로그인</div>
+              <div onClick={() => setIsLoggedIn(false)}>로그아웃</div>
               <div>|</div>
-              <div>회원가입</div>
+              <Link href="/user">
+                <div>마이페이지</div>
+              </Link>
             </AuthBox>
           ) : (
             <AuthBox>
-              <div onClick={() => setIsLoggedIn(false)}>로그아웃</div>
+              <div onClick={() => setIsLoggedIn(true)}>로그인</div>
               <div>|</div>
-              <div>마이페이지</div>
+              <div>회원가입</div>
             </AuthBox>
           )}
 
