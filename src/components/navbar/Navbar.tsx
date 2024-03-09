@@ -7,8 +7,11 @@ import NOSSR from "../common/NOSSR";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { NavbarVariants } from "@/styles/animation";
+import { isLoggedInState } from "@/context/recoilContext";
+import { useRecoilState } from "recoil";
 
 export default function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
   const [openNavbar, setOpenNavbar] = useState(false);
   const router = useRouter();
 
@@ -41,7 +44,7 @@ export default function Navbar() {
             router.push("/adCopy/createAdCopy");
             break;
           case 1:
-            router.push("/adCopy/gallery");
+            router.push("/adCopy/copyGallery");
             break;
           default:
             break;
@@ -90,12 +93,19 @@ export default function Navbar() {
               return <Title key={index}>{title}</Title>;
             })}
           </TitleBox>
-
-          <AuthBox>
-            <div>로그인</div>
-            <div>|</div>
-            <div>회원가입</div>
-          </AuthBox>
+          {isLoggedIn ? (
+            <AuthBox>
+              <div onClick={() => setIsLoggedIn(true)}>로그인</div>
+              <div>|</div>
+              <div>회원가입</div>
+            </AuthBox>
+          ) : (
+            <AuthBox>
+              <div onClick={() => setIsLoggedIn(false)}>로그아웃</div>
+              <div>|</div>
+              <div>마이페이지</div>
+            </AuthBox>
+          )}
 
           {openNavbar && (
             <IndexBox
